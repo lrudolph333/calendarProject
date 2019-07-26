@@ -5,14 +5,39 @@
   </head>
   <body>
     <h2>To Do</h2>
-    <form id="loginData">
-    <div>
-      <p>Username: <input id="username" type="text"/></p>
-      <br>
-      <p>Password: <input id="password" type="password"/></p>
-      <br>
-      <button id="loginbtn">Login</button>
-      <button id="signupbtn">Sign Up</button>
+      <form id="loginInfo">
+        <div>
+        <p>Username: <input id="username" required type="text"/></p>
+        <br>
+        <p>Password: <input id="password" required type="password"/></p>
+        <br>
+        <input type="submit" id="loginbtn" value="Login"></input>
+        <input type="submit" id="signupbtn" value="Sign Up"></input>
+      </div>
     </form>
+    <script>
+
+      document.getElementById("loginInfo").addEventListener("submit", function(e) {
+
+        e.preventDefault();
+
+        var buttonPressed = document.querySelector("input[type=submit]:focus").id;
+
+        if(buttonPressed == "loginbtn") {
+          login();
+        }
+        else {
+          signup();
+        }
+
+      });
+
+      function login() {
+        alert("You logged in");
+      }
+      function signup() {
+        alert("You signed up");
+      }
+    </script>
   </body>
 </html>
