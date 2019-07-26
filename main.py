@@ -9,7 +9,7 @@ jinja_env = jinja2.Environment(
 
 class LoginPage(webapp2.RequestHandler):
     def get(self):
-        login_template = the_jinja_env.get_template('login.html');
+        login_template = jinja_env.get_template('login.html');
         self.response.write(login_template.render())
 
 app = webapp2.WSGIApplication([
