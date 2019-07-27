@@ -5,7 +5,7 @@
   </head>
   <body>
     <h2>To Do</h2>
-      <form id="loginInfo">
+      <form id="loginInfo" method="post">
         <div>
         <p>Username: <input id="username" required type="text"/></p>
         <br>
@@ -23,16 +23,20 @@
 
         var buttonPressed = document.querySelector("input[type=submit]:focus").id;
 
+        var formData = new FormData();
+        formData.append("username", document.querySelector("#username").value);
+        formData.append("password", document.querySelector("#password").value);
+
         if(buttonPressed == "loginbtn") {
-          login();
+          login(formData);
         }
         else {
-          signup();
+          signup(formData);
         }
 
       });
 
-      function login() {
+      function login(data) {
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function() {
           if (this.readyState == 4 && this.status == 200) {
@@ -40,9 +44,9 @@
           }
         };
         xhttp.open("POST", "/login", true);
-        xhttp.send();
+        xhttp.send(data);
       }
-      function signup() {
+      function signup(data) {
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function() {
           if (this.readyState == 4 && this.status == 200) {
@@ -50,7 +54,7 @@
           }
         };
         xhttp.open("POST", "/signup", true);
-        xhttp.send();
+        xhttp.send(data);
       }
     </script>
   </body>
