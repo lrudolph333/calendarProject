@@ -1,17 +1,24 @@
 import webapp2
-import jinja2
 import os
-
-jinja_env = jinja2.Environment(
-    loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
-    extensions=['jinja2.ext.autoescape'],
-    autoescape=True)
 
 class LoginPage(webapp2.RequestHandler):
     def get(self):
-        login_template = jinja_env.get_template('login.html');
-        self.response.write(login_template.render())
+        f = open("login.html", "r")
+        self.response.headers['Content-Type'] = "text/html";
+        self.response.write(f.read())
+
+class LoginParser(webapp2.RequestHandler):
+    def post(self):
+        self.response.headers['Content-Type'] = "text/plain";
+        self.response.write("Logged In");
+
+class SignupParser(webapp2.RequestHandler):
+    def post(self):
+        self.response.headers['Content-Type'] = "text/plain";
+        self.response.write("Signed Up");
 
 app = webapp2.WSGIApplication([
     ('/', LoginPage),
+    ('/login', LoginParser),
+    ('/signup', SignupParser)
 ], debug=True);

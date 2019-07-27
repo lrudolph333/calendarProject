@@ -33,10 +33,24 @@
       });
 
       function login() {
-        alert("You logged in");
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+          if (this.readyState == 4 && this.status == 200) {
+            document.body.innerHTML = xhttp.responseText;
+          }
+        };
+        xhttp.open("POST", "/login", true);
+        xhttp.send();
       }
       function signup() {
-        alert("You signed up");
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+          if (this.readyState == 4 && this.status == 200) {
+            document.body.innerHTML = xhttp.responseText;
+          }
+        };
+        xhttp.open("POST", "/signup", true);
+        xhttp.send();
       }
     </script>
   </body>
