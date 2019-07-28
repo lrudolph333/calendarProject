@@ -40,7 +40,12 @@
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function() {
           if (this.readyState == 4 && this.status == 200) {
-            alert(xhttp.responseText);
+            if(isNaN(xhttp.responseText)) {
+              alert(xhttp.responseText);
+            }
+            else {
+              loadDashboard(xhttp.responseText);
+            }
           }
         };
         xhttp.open("POST", "/login", true);
@@ -50,12 +55,33 @@
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function() {
           if (this.readyState == 4 && this.status == 200) {
-            alert(xhttp.responseText);
+            if(isNaN(xhttp.responseText)) {
+              alert(xhttp.responseText);
+            }
+            else {
+              loadDashboard(xhttp.responseText);
+            }
           }
         };
         xhttp.open("POST", "/signup", true);
         xhttp.send(data);
       }
+
+      function loadDashboard(userID) {
+
+        var form = document.createElement('form');
+        form.style.visibility = 'hidden';
+        form.method = 'POST';
+        form.action = 'dashboard.html';
+        var key = document.createElement("input");
+        key.name = "userID";
+        key.value = userID;
+        form.appendChild(key);
+        document.body.appendChild(form);
+        form.submit();
+
+      }
+
     </script>
   </body>
 </html>

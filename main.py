@@ -1,6 +1,12 @@
 import webapp2
 import os
+import jinja2
 from google.appengine.ext import ndb
+
+jinja_env = jinja2.Environment(
+    loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
+    extensions=['jinja2.ext.autoescape'],
+    autoescape=True)
 
 class UserCredentials(ndb.Model):
     username = ndb.StringProperty(required=True)
@@ -23,7 +29,7 @@ class LoginParser(webapp2.RequestHandler):
 
         if len(users) > 0:
             if users[0].password == password :
-                self.response.write("Logged in")
+                self.response.write(users[0].key.integer_id())
             else :
                 self.response.write("Incorrect password")
         else:
@@ -40,12 +46,22 @@ class SignupParser(webapp2.RequestHandler):
         if userAlreadyExists:
             self.response.write("Sorry, that user already exists");
         else:
-            self.response.write("Signed Up");
             newUser = UserCredentials(username=username, password=password);
-            newUser.put();
+            key = newUser.put();
+            self.response.write(key.integer_id());
+
+class DashboardPage(webapp2.RequestHandler):
+    def post(self):
+        dashboardTemplate = jinja_env.get_template('dashboard.html');
+        self.response.headers['Content-Type'] = "text/html";
+        values = {
+            "userID": self.request.get("userID")
+        }
+        self.response.write(dashboardTemplate.render(values));
 
 app = webapp2.WSGIApplication([
     ('/', LoginPage),
     ('/login', LoginParser),
-    ('/signup', SignupParser)
+    ('/signup', SignupParser),
+    ('/dashboard.html', DashboardPage)
 ], debug=True);
