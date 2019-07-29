@@ -12,6 +12,12 @@ class UserCredentials(ndb.Model):
     username = ndb.StringProperty(required=True)
     password = ndb.StringProperty(required=True)
 
+
+class CalendarPage(webapp2.RequestHandler):
+    def post(self):
+        calendar_template = jinja_env.get_template('templates/calendar.html') 
+
+
 class LoginPage(webapp2.RequestHandler):
     def get(self):
         f = open("templates/login.html", "r")
@@ -64,5 +70,6 @@ app = webapp2.WSGIApplication([
     ('/', LoginPage),
     ('/login', LoginParser),
     ('/signup', SignupParser),
-    ('/dashboard.html', DashboardPage)
+    ('/dashboard.html', DashboardPage),
+    ('/calendar', CalendarPage),
 ], debug=True);
