@@ -15,8 +15,9 @@ class UserCredentials(ndb.Model):
 
 class CalendarPage(webapp2.RequestHandler):
     def post(self):
-        calendar_template = jinja_env.get_template('templates/calendar.html') 
-
+        calendar_template = jinja_env.get_template('templates/calendar.html')
+        self.response.headers['Content-Type'] = "text/html";
+        self.response.write(calendar_template.render());
 
 class LoginPage(webapp2.RequestHandler):
     def get(self):
@@ -66,10 +67,25 @@ class DashboardPage(webapp2.RequestHandler):
         }
         self.response.write(dashboardTemplate.render(values));
 
+class LoginCSS(webapp2.RequestHandler):
+    def get(self):
+        self.response.headers['Content-Type'] = "text/css";
+        f = open("stylesheet/login.css", "r")
+        self.response.write(f.read());
+
+class DashboardCSS(webapp2.RequestHandler):
+    def get(self):
+        self.response.headers['Content-Type'] = "text/css";
+        f = open("stylesheet/dashboard.css", "r")
+        self.response.write(f.read());
+
 app = webapp2.WSGIApplication([
     ('/', LoginPage),
     ('/login', LoginParser),
     ('/signup', SignupParser),
     ('/dashboard.html', DashboardPage),
-    ('/calendar', CalendarPage),
+    ('/calendar.html', CalendarPage),
+    ('/stylesheet/login.css', LoginCSS),
+    ('/stylesheet/dashboard.css', DashboardCSS)
+
 ], debug=True);
