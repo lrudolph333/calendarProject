@@ -2,16 +2,12 @@ import webapp2
 import os
 import jinja2
 from google.appengine.ext import ndb
+from models.py import *
 
 jinja_env = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
     extensions=['jinja2.ext.autoescape'],
     autoescape=True)
-
-class UserCredentials(ndb.Model):
-    username = ndb.StringProperty(required=True)
-    password = ndb.StringProperty(required=True)
-
 
 class CalendarPage(webapp2.RequestHandler):
     def post(self):
@@ -42,6 +38,8 @@ class ProfilePage(webapp2.RequestHandler):
         profile_template = jinja2.get_template("/templates/profile.html")
         self.response.headers['Content-Type'] = "text/html"
         self.response.write(profile_template.render())
+
+
 
 class LoginParser(webapp2.RequestHandler):
     def post(self):
