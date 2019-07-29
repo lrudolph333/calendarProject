@@ -1,8 +1,71 @@
+body {
+	width: 100wh;
+	height: 90vh;
+	color: #fff;
+	background: linear-gradient(-45deg, #fbffc9, #baf4f5, #e0cffa, #f7e4f6);
+	background-size: 400% 400%;
+	-webkit-animation: Gradient 5s ease infinite;
+	-moz-animation: Gradient 5s ease infinite;
+	animation: Gradient 5s ease infinite;
+}
+
+@-webkit-keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
+
+@-moz-keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
+
+@keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
+
 h2 {
   text-align: center;
-  font-size: 30px
+  font-size: 50px;
+  font-family: 'Fira Sans', sans-serif;
 }
 
 #loginInfo {
-  text-align: center;
+  margin: auto;
+ width: 50%;
+ border: 3px ;
+ padding: 10px;
+  font-family: 'Rubik', sans-serif;
+  border-width: 20px;
+  -webkit-border-radius: 10px 10px 10px 10px;
+ border-radius: 10px 10px 10px 10px;
+ padding: 30px;
+ width: 90%;
+ max-width: 450px;
+ position: relative;
+ padding: 50px;
+ -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+ box-shadow: 0 50px 80px 0 rgba(0,0,0,0.3);
+ text-align: center;
 }
