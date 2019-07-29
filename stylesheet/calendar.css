@@ -1,20 +1,25 @@
 .sidebar {
+  margin: 0;
+  padding: 0;
   height: 100%;
-  width: 10%;
+  width: 8%;
   position: fixed;
   z-index: 1;
   top: 0;
   left: 0;
   background-color: black;
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
 .sideItem {
 
-  height: 33%;
-  font-size: 25px;
+  height: 34%;
+  font-size: 130%;
   color: #818181;
   display: block;
+  margin: 0px;
+  border: 0px;
+  padding: 0px;
 
 }
 
@@ -22,12 +27,16 @@
 
   height: 100%;
   width: 100%;
+  vertical-align: center;
   margin-left: auto;
   margin-right: auto;
   text-align: center;
-  vertical-align: middle;
+  display: block;
   border-color: white;
-  border-style: dashed;
-  border-width: thick;
+  border-top-style: solid;
+  border-bottom-style: solid;
+  border-width: thin;
+  margin-top: 0px;
+  margin-bottom: 0px;
 
 }
