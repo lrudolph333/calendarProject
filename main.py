@@ -14,7 +14,7 @@ class UserCredentials(ndb.Model):
 
 class LoginPage(webapp2.RequestHandler):
     def get(self):
-        f = open("login.html", "r")
+        f = open("templates/login.html", "r")
         self.response.headers['Content-Type'] = "text/html";
         self.response.write(f.read())
 
@@ -52,7 +52,7 @@ class SignupParser(webapp2.RequestHandler):
 
 class DashboardPage(webapp2.RequestHandler):
     def post(self):
-        dashboardTemplate = jinja_env.get_template('dashboard.html');
+        dashboardTemplate = jinja_env.get_template('templates/dashboard.html');
         self.response.headers['Content-Type'] = "text/html";
         values = {
             "userID": self.request.get("userID"),
