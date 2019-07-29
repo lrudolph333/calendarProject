@@ -12,32 +12,32 @@
     <div class="bigwrap">
       <div class="wrapper">
         <div class="bigbox">
-          <div class="box">
+          <div class="box" onclick=nav(0)>
             <p class="text">A</p>
           </div>
         </div>
         <div class="bigbox">
-          <div class="box">
+          <div class="box" onclick=nav(1)>
             <p class="text">B</p>
           </div>
         </div>
         <div class="bigbox">
-          <div class="box">
+          <div class="box" onclick=nav(2)>
             <p class="text">C</p>
           </div>
         </div>
         <div class="bigbox">
-          <div class="box">
+          <div class="box" onclick=nav(3)>
             <p class="text">D</p>
           </div>
         </div>
         <div class="bigbox">
-          <div class="box">
+          <div class="box" onclick=nav(4)>
             <p class="text">E</p>
           </div>
         </div>
         <div class="bigbox">
-          <div class="box">
+          <div class="box" onclick=nav(5)>
             <p class="text">F</p>
           </div>
         </div>
@@ -45,6 +45,43 @@
     </div>
   </div>
     <script>
+
+      function nav(num) {
+
+        var form = document.createElement('form');
+        form.style.visibility = 'hidden';
+        form.method = 'POST';
+        var key = document.createElement("input");
+        key.name = "userID";
+        key.value = {{userID}};
+        form.appendChild(key);
+        var key2 = document.createElement("input");
+        key2.name = "username";
+        key2.value = "{{username}}";
+        form.appendChild(key2);
+
+        switch(num) {
+
+          case 0:
+            break;
+          case 1:
+            break;
+          case 2:
+            break;
+          case 3:
+            break;
+          case 4:
+            break;
+          case 5:
+            break;
+
+        }
+
+        document.body.appendChild(form);
+        form.submit();
+
+      }
+
       var xhttp = new XMLHttpRequest();
       xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
