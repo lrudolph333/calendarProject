@@ -19,6 +19,10 @@ class CalendarPage(webapp2.RequestHandler):
         self.response.headers['Content-Type'] = "text/html";
         self.response.write(calendar_template.render());
 
+class ToDoListPage(webapp2.RequestHandler):
+    def post(self):
+        to_do_template = jinja_env.get_template('template/todo.html')
+
 class LoginPage(webapp2.RequestHandler):
     def get(self):
         f = open("templates/login.html", "r")
@@ -86,6 +90,7 @@ app = webapp2.WSGIApplication([
     ('/dashboard.html', DashboardPage),
     ('/calendar.html', CalendarPage),
     ('/stylesheet/login.css', LoginCSS),
-    ('/stylesheet/dashboard.css', DashboardCSS)
+    ('/stylesheet/dashboard.css', DashboardCSS),
+    ('/todo.html', ToDoListPage)
 
 ], debug=True);
