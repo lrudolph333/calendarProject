@@ -11,6 +11,48 @@
   overflow: hidden;
 }
 
+body {
+  margin: 0;
+}
+
+.topbar {
+  overflow: hidden;
+  margin: 0;
+  margin-left: 8%;
+  height: 15%;
+  background-color: gray;
+}
+
+.weekButton {
+
+  float: left;
+  color: white;
+  width: 19.5%;
+  border-right-style: solid;
+  border-right-color: white;
+  border-right-thickness: thin;
+
+}
+
+#rightButton {
+
+  float: left;
+  width: 19.8%;
+  border-right-style: none;
+
+}
+
+.currentWeek {
+
+  float: left;
+  width: 60%;
+  border-right-style: solid;
+  border-right-color: white;
+  border-right-thickness: thin;
+  color: white;
+
+}
+
 .sideItem {
 
   height: 34%;
@@ -33,7 +75,6 @@
   text-align: center;
   display: block;
   border-color: white;
-  border-top-style: solid;
   border-bottom-style: solid;
   border-width: thin;
   margin-top: 0px;
