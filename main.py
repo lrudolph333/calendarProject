@@ -16,12 +16,8 @@ class UserCredentials(ndb.Model):
 class CalendarPage(webapp2.RequestHandler):
     def post(self):
         calendar_template = jinja_env.get_template('templates/calendar.html')
-        self.response.headers['Content-Type'] = "text/html";
-        values = {
-            "userID": self.request.get("userID"),
-            "username": self.request.get("username")
-        }
-        self.response.write(calendar_template.render(values));
+        self.response.headers['Content-Type'] = "text/html"
+        self.response.write(calendar_template.render())
 
 class ToDoListPage(webapp2.RequestHandler):
     def post(self):
@@ -101,23 +97,16 @@ class DashboardCSS(webapp2.RequestHandler):
         f = open("stylesheet/dashboard.css", "r")
         self.response.write(f.read());
 
-class CalendarCSS(webapp2.RequestHandler):
-    def get(self):
-        self.response.headers['Content-Type'] = "text/css";
-        f = open("stylesheet/calendar.css", "r")
-        self.response.write(f.read());
-
 app = webapp2.WSGIApplication([
     ('/', LoginPage),
     ('/login', LoginParser),
     ('/signup', SignupParser),
     ('/dashboard.html', DashboardPage),
     ('/calendar.html', CalendarPage),
-    ('/stylesheet/calendar.css', CalendarCSS),
     ('/stylesheet/login.css', LoginCSS),
     ('/stylesheet/dashboard.css', DashboardCSS),
     ('/todo.html', ToDoListPage),
     ('/schedule.html', SchedulePage),
-    ('/profile.html', ProfilePage)
+    ('/profile.html', ProfilePage),
 
 ], debug=True);
