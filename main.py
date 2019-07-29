@@ -55,7 +55,8 @@ class DashboardPage(webapp2.RequestHandler):
         dashboardTemplate = jinja_env.get_template('dashboard.html');
         self.response.headers['Content-Type'] = "text/html";
         values = {
-            "userID": self.request.get("userID")
+            "userID": self.request.get("userID"),
+            "username": UserCredentials.get_by_id(int(self.request.get("userID"))).username
         }
         self.response.write(dashboardTemplate.render(values));
 
