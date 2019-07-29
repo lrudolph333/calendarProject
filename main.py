@@ -95,12 +95,19 @@ class DashboardCSS(webapp2.RequestHandler):
         f = open("stylesheet/dashboard.css", "r")
         self.response.write(f.read());
 
+class CalendarCSS(webapp2.RequestHandler):
+    def get(self):
+        self.response.headers['Content-Type'] = "text/css";
+        f = open("stylesheet/calendar.css", "r")
+        self.response.write(f.read());
+
 app = webapp2.WSGIApplication([
     ('/', LoginPage),
     ('/login', LoginParser),
     ('/signup', SignupParser),
     ('/dashboard.html', DashboardPage),
     ('/calendar.html', CalendarPage),
+    ('/stylesheets/calendar.css', CalendarCSS),
     ('/stylesheet/login.css', LoginCSS),
     ('/stylesheet/dashboard.css', DashboardCSS),
     ('/todo.html', ToDoListPage),
