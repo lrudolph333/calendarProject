@@ -91,6 +91,7 @@ body {
 }
 
 .text {
+  font-family: 'Fira Sans', sans-serif;
   color: white;
   margin: 0;
   height: 55%;
