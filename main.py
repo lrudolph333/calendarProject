@@ -37,7 +37,11 @@ class ProfilePage(webapp2.RequestHandler):
     def post(self):
         profile_template = jinja2.get_template("/templates/profile.html")
         self.response.headers['Content-Type'] = "text/html"
-        self.response.write(profile_template.render())
+        id = self.request.get("userID")
+        values = {
+            "user": UserCredentials.get_by_id(int(id))
+        }
+        self.response.write(profile_template.render(values))
 
 
 
