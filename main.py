@@ -28,7 +28,7 @@ class SchedulePage(webapp2.RequestHandler):
         self.response.write(schedule_template.render())
 
 class LoginPage(webapp2.RequestHandler):
-    def post(self):
+    def get(self):
         f = open("templates/login.html", "r")
         self.response.headers['Content-Type'] = "text/html";
         self.response.write(f.read())
