@@ -66,6 +66,7 @@ class SignupParser(webapp2.RequestHandler):
     def post(self):
         username = self.request.get("username");
         password = self.request.get("password");
+        name = "";
 
         userAlreadyExists = len(UserCredentials.query().filter(UserCredentials.username == username).fetch()) > 0;
         self.response.headers['Content-Type'] = "text/plain";
