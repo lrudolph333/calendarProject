@@ -2,11 +2,13 @@
 <html>
   <head>
     <title>Dashboard - To Do</title>
+    <link rel="stylesheet" type="text/css" href="../stylesheet/dashboard.css">
   </head>
   <body>
-    <p>Your user ID is {{userID}}</p>
-    <p>Your username is {{username}}</p>
-    <p id="qod"></p>
+    <div>
+      <h2>Hello, {{username}}</h2>
+      <p id="qod"></p>
+    </div>
     <script>
       var xhttp = new XMLHttpRequest();
       xhttp.onreadystatechange = function() {
