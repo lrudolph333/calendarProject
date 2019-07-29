@@ -107,7 +107,7 @@ app = webapp2.WSGIApplication([
     ('/signup', SignupParser),
     ('/dashboard.html', DashboardPage),
     ('/calendar.html', CalendarPage),
-    ('/stylesheets/calendar.css', CalendarCSS),
+    ('/stylesheet/calendar.css', CalendarCSS),
     ('/stylesheet/login.css', LoginCSS),
     ('/stylesheet/dashboard.css', DashboardCSS),
     ('/todo.html', ToDoListPage),
