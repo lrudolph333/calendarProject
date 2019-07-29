@@ -11,9 +11,10 @@
       var xhttp = new XMLHttpRequest();
       xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-          parser = new DOMParser();
-          response = parser.parseFromString(xhttp.responseText, "text/xml");
-          console.log(response);
+          var quote = JSON.parse(xhttp.responseText).contents.quotes[0];
+          var quoteText = quote.quote;
+          var quoteAuthor = quote.author;
+          document.getElementById("qod").innerHTML = "<em>" + quoteText + "</em> - " + quoteAuthor;
         }
       };
     xhttp.open("GET", "https://quotes.rest/qod", true);
