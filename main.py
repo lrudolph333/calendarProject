@@ -21,7 +21,7 @@ class CalendarPage(webapp2.RequestHandler):
 
 class ToDoListPage(webapp2.RequestHandler):
     def post(self):
-        to_do_template = jinja_env.get_template('template/todo.html')
+        to_do_template = jinja_env.get_template('templates/todo.html')
         self.response.headers['Content-Type'] = "text/html"
         self.response.write(to_do_template.render())
 
@@ -32,10 +32,16 @@ class SchedulePage(webapp2.RequestHandler):
         self.response.write(schedule_template.render())
 
 class LoginPage(webapp2.RequestHandler):
-    def get(self):
+    def post(self):
         f = open("templates/login.html", "r")
         self.response.headers['Content-Type'] = "text/html";
         self.response.write(f.read())
+
+class ProfilePage(webapp2.RequestHandler):
+    def post(self):
+        profile_template = jinja2.get_template("/templates/profile.html")
+        self.response.headers['Content-Type'] = "text/html"
+        self.response.write(profile_template.render())
 
 class LoginParser(webapp2.RequestHandler):
     def post(self):
@@ -101,5 +107,6 @@ app = webapp2.WSGIApplication([
     ('/stylesheet/dashboard.css', DashboardCSS),
     ('/todo.html', ToDoListPage),
     ('/schedule.html', SchedulePage),
+    ('/profile.html', ProfilePage)
 
 ], debug=True);
