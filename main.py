@@ -35,7 +35,7 @@ class LoginPage(webapp2.RequestHandler):
 
 class ProfilePage(webapp2.RequestHandler):
     def post(self):
-        profile_template = jinja2.get_template("/templates/profile.html")
+        profile_template = jinja_env.get_template("/templates/profile.html")
         self.response.headers['Content-Type'] = "text/html"
         id = self.request.get("userID")
         values = {
@@ -86,7 +86,7 @@ class DashboardPage(webapp2.RequestHandler):
         values = {
             "userID": self.request.get("userID"),
             "username": UserCredentials.get_by_id(int(self.request.get("userID"))).username,
-            "realName": "",
+            "realName": self.request.get("realName"),
         }
         self.response.write(dashboardTemplate.render(values));
 

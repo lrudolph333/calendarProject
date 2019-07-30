@@ -5,6 +5,15 @@
     <title>Profile</title>
   </head>
   <body>
-    {{values}}
+    {{user}}
+    <div class="">
+      {{user.username}}
+    </div>
+    <form class="form" action="dashboard.html" method="post">
+      <!--<input type="text" name="realName" value="Real Name">-->
+      <input type="hidden" value="{{userID}}"/>
+      <input type="hidden" value="realName">
+      <input type="submit" name="Submit" value="Submit">
+    </form>
   </body>
 </html>
