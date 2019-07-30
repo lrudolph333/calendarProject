@@ -51,6 +51,11 @@ class ProfilePage(webapp2.RequestHandler):
         userDict = UserCredentials.get_by_id(int(id))
         realName = self.request.get("realName")
         userDict.realName = realName
+        if len(userDict.realName) == 0:
+            realName = self.request.get("realName")
+            userDict.realName = realName
+        else:
+            userDict.realName
         userDict.put()
         values = {
             "user": userDict,
