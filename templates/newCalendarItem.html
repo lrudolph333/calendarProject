@@ -32,9 +32,9 @@
             key.value = "{{userID}}";
             form.appendChild(key);
             var username = document.createElement("input");
-            key.name = "username";
-            key.value = "{{username}}";
-            form.appendChild(key);
+            username.name = "username";
+            username.value = "{{username}}";
+            form.appendChild(username);
             document.body.appendChild(form);
             form.submit();
           }
