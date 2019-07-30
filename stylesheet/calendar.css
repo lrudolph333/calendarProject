@@ -30,14 +30,15 @@ body {
   width: 19.5%;
   border-right-style: solid;
   border-right-color: white;
-  border-right-thickness: thin;
+  border-right-width: thin;
+  text-align: center;
 
 }
 
 #rightButton {
 
   float: left;
-  width: 19.8%;
+  width: 19%;
   border-right-style: none;
 
 }
@@ -48,8 +49,9 @@ body {
   width: 60%;
   border-right-style: solid;
   border-right-color: white;
-  border-right-thickness: thin;
+  border-right-width: thin;
   color: white;
+  text-align: center;
 
 }
 
