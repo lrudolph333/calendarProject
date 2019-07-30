@@ -7,7 +7,7 @@
   z-index: 1;
   top: 0;
   left: 0;
-  background-color: black;
+  background-color: white;
   overflow: hidden;
 }
 
@@ -66,6 +66,14 @@ body {
   padding: 0px;
 
 }
+#add {
+float:middle;
+vertical-align: center;
+margin-top: 25%;
+margin-left: 20%;
+margin-right: 9%;
+text-align:middle;
+}
 
 .selection {
 
@@ -82,6 +90,14 @@ body {
   margin-top: 0px;
   margin-bottom: 0px;
 
+}
+.selection text {
+  text-align: justify;
+}
+
+.selection img {
+  display: block;
+  margin: 0 auto;
 }
 
 .calendar {
