@@ -4,13 +4,35 @@
     <meta charset="utf-8">
     <title>To-Do List</title>
   </head>
-  {{user}}
+  {{user.realName}}
   <body>
     <div class="">
+      <form class="form" action="todo.html" method="post">
+        <input type="hidden" name="user" value={{user}}>
+        <label for="name">Name</label>
+        <input type="text" name="name">
+        <br>
+        <label for="date">Date</label>
+        <input type="text" name="date">
+        <br>
+        <label for="time">Time</label>
+        <input type="text" name="time">
+        <br>
+        <label for="urgency">Urgency:</label>
+        <select class="form" name="urgency">
+            <option value="">Red</option>
+            <option value="">Orange</option>
+            <option value="">Yellow</option>
+        </select>
+        <br>
+        <label for="note">Note:</label>
+        <textarea name="note" rows="5"></textarea>
+      </form>
       <form class="form" action="dashboard.html" method="post">
         <input type="hidden" name="userID" value="{{user.key.integer_id()}}">
         <input type="submit" name="goBackButton" value="Go Back">
       </form>
+
     </div>
   </body>
 </html>

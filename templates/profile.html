@@ -14,14 +14,16 @@
     </div>
     <form class="form" action="profile.html" method="post">
       <!--<input type="text" name="realName" value="Real Name">-->
+      <input type="hidden" name="userID" value="{{user.key.integer_id()}}"/>
       <label for="realName">Input Real Name</label>
       <input type="text" name="realName">
       <br>
       <input type="submit" name="Submit" value="Submit">
     </form>
     <form class="form" action="dashboard.html" method="post">
-      <input type="hidden" name="userID" value="{{user.key.integer_id()}}"/>
-      
+      <input type="hidden" name="userID" value="{{user.key.integer_id()}}">
+      <<input type="hidden" name="realName" value="{{user.realName}}">
+      <input type="submit" name="Submit" value="Go Back">
     </form>
   </body>
 </html>
