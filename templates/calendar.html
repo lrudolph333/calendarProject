@@ -67,6 +67,25 @@
 
       }
 
+      fetchEvents();
+
+      function fetchEvents() {
+
+        var formData = new FormData();
+        formData.append("filter", pastDate);
+        formData.append("filterBy", "week");
+
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+          if (this.readyState == 4 && this.status == 200) {
+            console.log(xhttp.responseText);
+          }
+        };
+        xhttp.open("POST", "/queryparser", true);
+        xhttp.send(formData);
+
+      };
+
       function dashboard() {
 
         var form = document.createElement('form');
