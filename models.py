@@ -5,4 +5,3 @@ class UserCredentials(ndb.Model):
     username = ndb.StringProperty(required=True)
     password = ndb.StringProperty(required=True)
     realName = ndb.StringProperty()
-    
