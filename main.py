@@ -133,7 +133,7 @@ class NewCalendarItemPage(webapp2.RequestHandler):
         self.response.headers['Content-Type'] = "text/html";
         values = {
             "userID": self.request.get("userID"),
-            "username": UserCredentials.get_by_id(int(self.request.get("userID"))).username,
+            "username": self.request.get("username"),
         }
         self.response.write(dashboardTemplate.render(values));
 
@@ -197,6 +197,27 @@ class QueryParser(webapp2.RequestHandler):
 
             self.response.write(events);
 
+class SearchCalParser(webapp2.RequestHandler):
+    def post(self):
+        self.response.headers['Content-Type'] = "text/plain";
+        self.response.write("[]");
+
+class SearchCalPage(webapp2.RequestHandler):
+    def post(self):
+        dashboardTemplate = jinja_env.get_template('templates/searchCal.html');
+        self.response.headers['Content-Type'] = "text/html";
+        values = {
+            "userID": self.request.get("userID"),
+            "username": self.request.get("username"),
+        }
+        self.response.write(dashboardTemplate.render(values));
+
+class SearchCalCSS(webapp2.RequestHandler):
+    def get(self):
+        self.response.headers['Content-Type'] = "text/css";
+        f = open("stylesheet/searchCal.css", "r")
+        self.response.write(f.read());
+
 app = webapp2.WSGIApplication([
     ('/', LoginPage),
     ('/login', LoginParser),
@@ -213,5 +234,8 @@ app = webapp2.WSGIApplication([
     ('/todo.html', ToDoListPage),
     ('/schedule.html', SchedulePage),
     ('/profile.html', ProfilePage),
+    ('/searchCal.html', SearchCalPage),
+    ('/stylesheet/searchCal.css', SearchCalCSS),
+    ('/searchCalParser', SearchCalParser)
 
 ], debug=True);

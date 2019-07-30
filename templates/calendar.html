@@ -158,6 +158,21 @@
 
       function search() {
 
+        var form = document.createElement('form');
+        form.style.visibility = 'hidden';
+        form.method = 'POST';
+        form.action = 'searchCal.html';
+        var key = document.createElement("input");
+        key.name = "userID";
+        key.value = "{{userID}}";
+        form.appendChild(key);
+        var username = document.createElement("input");
+        username.name = "username";
+        username.value = "{{username}}";
+        form.appendChild(username);
+        document.body.appendChild(form);
+        form.submit();
+
       }
 
       function settings() {
