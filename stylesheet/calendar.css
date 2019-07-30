@@ -83,3 +83,26 @@ body {
   margin-bottom: 0px;
 
 }
+
+.calendar {
+  margin-left: 8%;
+  height: 100%;
+  width: 92%;
+  background-color: #CCCCCC;
+  display: block;
+  position: absolute;
+}
+
+.day {
+  float: left;
+  height: 100%;
+  width: 14%;
+  border-right-color: black;
+  border-right-width: thin;
+  border-right-style: solid;
+  text-align: center;
+}
+
+#day7 {
+  border-right-style: none;
+}
