@@ -98,7 +98,18 @@
           if (this.readyState == 4 && this.status == 200) {
             eval("var data=" + xhttp.responseText);
             for(var i=0; i<data.length; i++) {
-              
+              for(var j=0; j<data[i].length; j++) {
+                var event = data[i][j];
+                var newDiv = document.createElement("div");
+                newDiv.classList.add("event");
+                var title = document.createElement("p");
+                title.innerHTML = "<strong>"+event.title+"</strong>"
+                var description = document.createElement("p");
+                description.innerHTML = event.time + " at " + event.location;
+                newDiv.appendChild(title);
+                newDiv.appendChild(description);
+                document.getElementById("day" + (i+1)).appendChild(newDiv);
+              }
             }
           }
         };
