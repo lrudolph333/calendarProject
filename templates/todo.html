@@ -4,10 +4,13 @@
     <meta charset="utf-8">
     <title>To-Do List</title>
   </head>
+  {{user}}
   <body>
-    <form class="form" action="dashboard.html" method="post">
-      <input type="hidden" name="userID" value="{{user.key.integer_id()}}">
-      <input type="submit" name="goBackButton" value="Go Back">
-    </form>
+    <div class="">
+      <form class="form" action="dashboard.html" method="post">
+        <input type="hidden" name="userID" value="{{user.key.integer_id()}}">
+        <input type="submit" name="goBackButton" value="Go Back">
+      </form>
+    </div>
   </body>
 </html>

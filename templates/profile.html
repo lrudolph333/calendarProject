@@ -5,14 +5,19 @@
     <title>Profile</title>
   </head>
   <body>
-    {{user}}
     <div class="">
-      {{user.username}}
+      Username: {{user.username}}
+      <br>
+      Password: {{user.password}}
+      <br>
+      RealName: {{user.realName}}
     </div>
     <form class="form" action="dashboard.html" method="post">
       <!--<input type="text" name="realName" value="Real Name">-->
+      <label for="realName">Input Real Name</label>
+      <input type="text" name="realName">
+      <br>
       <input type="hidden" name="userID" value="{{user.key.integer_id()}}"/>
-      <input type="hidden" name="realName" value="realName">
       <input type="submit" name="Submit" value="Submit">
     </form>
   </body>

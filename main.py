@@ -46,10 +46,15 @@ class ProfilePage(webapp2.RequestHandler):
         profile_template = jinja_env.get_template("/templates/profile.html")
         self.response.headers['Content-Type'] = "text/html"
         id = self.request.get("userID")
+        userDict = UserCredentials.get_by_id(int(id))
+        realName = self.request.get("realName")
+        userDict.realName = realName
+        userDict.put()
         values = {
-            "user": UserCredentials.get_by_id(int(id))
+            "user": userDict,
         }
         self.response.write(profile_template.render(values))
+
 
 
 
