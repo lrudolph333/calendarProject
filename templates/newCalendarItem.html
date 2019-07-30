@@ -13,8 +13,25 @@
       <p>Location: <input type="text" required name="location"></p>
       <input type="hidden" value="{{userID}}" name="userID">
       <input type="submit">
+      <button onclick="back()">Cancel</button>
     </form>
     <script>
+      function back() {
+        var form = document.createElement('form');
+        form.style.visibility = 'hidden';
+        form.method = 'POST';
+        form.action = 'calendar.html';
+        var key = document.createElement("input");
+        key.name = "userID";
+        key.value = "{{userID}}";
+        form.appendChild(key);
+        var username = document.createElement("input");
+        username.name = "username";
+        username.value = "{{username}}";
+        form.appendChild(username);
+        document.body.appendChild(form);
+        form.submit();
+      }
       document.getElementById("formData").addEventListener("submit", function(e) {
 
         e.preventDefault();
@@ -23,20 +40,7 @@
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function() {
           if (this.readyState == 4 && this.status == 200) {
-            var form = document.createElement('form');
-            form.style.visibility = 'hidden';
-            form.method = 'POST';
-            form.action = 'calendar.html';
-            var key = document.createElement("input");
-            key.name = "userID";
-            key.value = "{{userID}}";
-            form.appendChild(key);
-            var username = document.createElement("input");
-            username.name = "username";
-            username.value = "{{username}}";
-            form.appendChild(username);
-            document.body.appendChild(form);
-            form.submit();
+            back();
           }
         };
         xhttp.open("POST", "/addCalItem", true);
