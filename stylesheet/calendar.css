@@ -20,14 +20,14 @@ body {
   margin: 0;
   margin-left: 9%;
   height: 15%;
-  background-color: gray;
+  background-color: red;
 }
 
 .weekButton {
 
   float: left;
   color: white;
-  width: 19.5%;
+  width: 19%;
   border-right-style: solid;
   border-right-color: white;
   border-right-width: thin;
@@ -36,10 +36,15 @@ body {
 }
 
 #rightButton {
-
+  background-color: blue;
   float: left;
-  width: 19%;
+  width: 20.8%;
   border-right-style: none;
+
+}
+
+#leftButton {
+  background-color: blue;
 
 }
 
