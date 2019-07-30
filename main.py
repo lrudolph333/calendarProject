@@ -49,6 +49,7 @@ class LoginParser(webapp2.RequestHandler):
     def post(self):
         username = self.request.get("username");
         password = self.request.get("password");
+        realName = ""
 
         self.response.headers['Content-Type'] = "text/plain";
 
@@ -84,7 +85,8 @@ class DashboardPage(webapp2.RequestHandler):
         self.response.headers['Content-Type'] = "text/html";
         values = {
             "userID": self.request.get("userID"),
-            "username": UserCredentials.get_by_id(int(self.request.get("userID"))).username
+            "username": UserCredentials.get_by_id(int(self.request.get("userID"))).username,
+            "realName": "",
         }
         self.response.write(dashboardTemplate.render(values));
 
