@@ -55,8 +55,19 @@ class ProfilePage(webapp2.RequestHandler):
         }
         self.response.write(profile_template.render(values))
 
+class CalItemParser(webapp2.RequestHandler):
+    def post(self):
+        self.response.headers['Content-Type'] = "text/plain";
 
+        time = self.request.get("time");
+        date = self.request.get("date");
+        title = self.request.get("title");
+        location = self.request.get("location");
+        ownerID = self.request.get("userID");
 
+        newCalItem = CalendarItem(time=time, date=date, title=title, location=location, ownerID=ownerID);
+        key = newCalItem.put();
+        self.response.write(key.integer_id());
 
 class LoginParser(webapp2.RequestHandler):
     def post(self):
@@ -141,6 +152,7 @@ app = webapp2.WSGIApplication([
     ('/', LoginPage),
     ('/login', LoginParser),
     ('/signup', SignupParser),
+    ('/addCalItem', CalItemParser),
     ('/dashboard.html', DashboardPage),
     ('/calendar.html', CalendarPage),
     ('/stylesheet/calendar.css', CalendarCSS),
