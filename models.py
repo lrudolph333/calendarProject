@@ -12,3 +12,10 @@ class CalendarItem(ndb.Model):
     title = ndb.StringProperty(required=True)
     location = ndb.StringProperty(required=True)
     ownerID = ndb.StringProperty(required=True)
+
+class ToDoItem(ndb.Model):
+    time = ndb.StringProperty(required=True)
+    date = ndb.StringProperty(required=True)
+    title = ndb.StringProperty(required=True)
+    urgency = ndb.IntegerProperty(required=True)
+    note = ndb.StringProperty()
