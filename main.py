@@ -13,17 +13,21 @@ class CalendarPage(webapp2.RequestHandler):
     def post(self):
         calendar_template = jinja_env.get_template('templates/calendar.html')
         self.response.headers['Content-Type'] = "text/html"
-        self.response.write(calendar_template.render())
+        values = {
+            "userID": self.request.get("userID"),
+            "username": self.request.get("username")
+        }
+        self.response.write(calendar_template.render(values));
 
 class ToDoListPage(webapp2.RequestHandler):
     def post(self):
         to_do_template = jinja_env.get_template('templates/todo.html')
         self.response.headers['Content-Type'] = "text/html"
-        self.response.write(to_do_template.render())
-        id = self.response.get("userID")
+        id = self.request.get("userID")
         values = {
-            "user": UserCredentials.get_by_id(int("userID"))
+            "user": UserCredentials.get_by_id(int(id))
         }
+        self.response.write(to_do_template.render(values))
 
 class SchedulePage(webapp2.RequestHandler):
     def post(self):
@@ -100,6 +104,22 @@ class LoginCSS(webapp2.RequestHandler):
         f = open("stylesheet/login.css", "r")
         self.response.write(f.read());
 
+class NewCalendarItemPage(webapp2.RequestHandler):
+    def post(self):
+        dashboardTemplate = jinja_env.get_template('templates/newCalendarItem.html');
+        self.response.headers['Content-Type'] = "text/html";
+        values = {
+            "userID": self.request.get("userID"),
+            "username": UserCredentials.get_by_id(int(self.request.get("userID"))).username,
+        }
+        self.response.write(dashboardTemplate.render(values));
+
+class NewCalendarItemCSS(webapp2.RequestHandler):
+    def get(self):
+        self.response.headers['Content-Type'] = "text/css";
+        f = open("stylesheet/newCalendarItem.css", "r")
+        self.response.write(f.read());
+
 class DashboardCSS(webapp2.RequestHandler):
     def get(self):
         self.response.headers['Content-Type'] = "text/css";
@@ -119,6 +139,8 @@ app = webapp2.WSGIApplication([
     ('/dashboard.html', DashboardPage),
     ('/calendar.html', CalendarPage),
     ('/stylesheet/calendar.css', CalendarCSS),
+    ('/newCalendarItem.html', NewCalendarItemPage),
+    ('/stylesheet/newCalendarItem.css', NewCalendarItemCSS),
     ('/stylesheet/login.css', LoginCSS),
     ('/stylesheet/dashboard.css', DashboardCSS),
     ('/todo.html', ToDoListPage),

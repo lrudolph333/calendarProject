@@ -17,14 +17,14 @@
       </div>
     </div>
     <div class="sidebar">
-      <div class="sideItem" onclick="add">
-        <p class="selection">Add</p>
+      <div class="sideItem">
+        <p class="selection" onclick="add()">Add</p>
       </div>
       <div class="sideItem">
-        <p class="selection" onclick="search">Search</p>
+        <p class="selection" onclick="search()">Search</p>
       </div>
       <div class="sideItem">
-        <p class="selection" onclick="settings">Settings</p>
+        <p class="selection" onclick="settings()">Settings</p>
       </div>
     </div>
     <div class="calendar">
@@ -65,6 +65,21 @@
       }
 
       function add() {
+
+        var form = document.createElement('form');
+        form.style.visibility = 'hidden';
+        form.method = 'POST';
+        var key = document.createElement("input");
+        key.name = "userID";
+        key.value = "{{userID}}";
+        form.appendChild(key);
+        var key2 = document.createElement("input");
+        key2.name = "username";
+        key2.value = "{{username}}";
+        form.appendChild(key2);
+        form.action = "newCalendarItem.html";
+        document.body.appendChild(form);
+        form.submit();
 
       }
 
