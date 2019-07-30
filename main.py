@@ -161,7 +161,7 @@ class QueryParser(webapp2.RequestHandler):
         filterBy = self.request.get("filterBy");
         filter = self.request.get("filter");
         if filterBy == "week":
-            startDate = datetime.strptime(filter, "%a %b %d %Y %H:%M:%S GMT-0700 (Pacific Daylight Time)");
+            startDate = datetime.strptime(filter, "%m/%d/%Y");
             dates = [];
             events = [];
 
