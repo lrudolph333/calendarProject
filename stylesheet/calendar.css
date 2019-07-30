@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   height: 100%;
-  width: 8%;
+  width: 9%;
   position: fixed;
   z-index: 1;
   top: 0;
@@ -18,7 +18,7 @@ body {
 .topbar {
   overflow: hidden;
   margin: 0;
-  margin-left: 8%;
+  margin-left: 9%;
   height: 15%;
   background-color: gray;
 }
@@ -57,7 +57,7 @@ body {
 
 .sideItem {
 
-  height: 34%;
+  height: 25%;
   font-size: 130%;
   color: #818181;
   display: block;
@@ -85,7 +85,7 @@ body {
 }
 
 .calendar {
-  margin-left: 8%;
+  margin-left: 9%;
   height: 100%;
   width: 92%;
   background-color: #CCCCCC;
