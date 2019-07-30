@@ -20,6 +20,10 @@ class ToDoListPage(webapp2.RequestHandler):
         to_do_template = jinja_env.get_template('templates/todo.html')
         self.response.headers['Content-Type'] = "text/html"
         self.response.write(to_do_template.render())
+        id = self.response.get("userID")
+        values = {
+            "user": UserCredentials.get_by_id(int("userID"))
+        }
 
 class SchedulePage(webapp2.RequestHandler):
     def post(self):
