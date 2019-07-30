@@ -18,6 +18,9 @@
     </div>
     <div class="sidebar">
       <div class="sideItem">
+        <p class="selection" onclick="dashboard()">Dashboard</p>
+      </div>
+      <div class="sideItem">
         <p class="selection" onclick="add()">Add</p>
       </div>
       <div class="sideItem">
@@ -61,6 +64,25 @@
         var p = document.createElement("p");
         p.innerHTML = d.toLocaleDateString();
         dayDiv.appendChild(p);
+
+      }
+
+      function dashboard() {
+
+        var form = document.createElement('form');
+        form.style.visibility = 'hidden';
+        form.method = 'POST';
+        form.action = 'dashboard.html';
+        var key = document.createElement("input");
+        key.name = "userID";
+        key.value = "{{userID}}";
+        form.appendChild(key);
+        var username = document.createElement("input");
+        username.name = "username";
+        username.value = "{{username}}";
+        form.appendChild(key);
+        document.body.appendChild(form);
+        form.submit();
 
       }
 
