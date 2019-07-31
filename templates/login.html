@@ -15,23 +15,27 @@
         <br>
         <p>Password: <input id="password" required type="password"/></p>
         <br>
-        <input type="submit" id="loginbtn" value="Login"></input>
-        <input type="submit" id="signupbtn" value="Sign Up"></input>
+        <input type="submit" onclick="hit(1)" id="loginbtn" value="Login"></input>
+        <input type="submit" onclick="hit(2)" id="signupbtn" value="Sign Up"></input>
       </div>
     </form>
     <script>
+
+      var val = 1;
+
+      function hit(value) {
+        val = value;
+      }
 
       document.getElementById("loginInfo").addEventListener("submit", function(e) {
 
         e.preventDefault();
 
-        var buttonPressed = document.querySelector("input[type=submit]:focus").id;
-
         var formData = new FormData();
         formData.append("username", document.querySelector("#username").value);
         formData.append("password", document.querySelector("#password").value);
 
-        if(buttonPressed == "loginbtn") {
+        if(val == 1) {
           login(formData);
         }
         else {
