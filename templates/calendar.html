@@ -30,7 +30,7 @@
         <img id= "add" src="https://cdn3.iconfinder.com/data/icons/pyconic-icons-1-2/512/search-512.png" width="75px" height="75px" alt=""/>
         <p class="selection">Search</p>
       </div>
-      <div class="sideItem" onclick="clear()">
+      <div class="sideItem" onclick="clearFunct()">
         <img id= "add" src="https://cdn2.iconfinder.com/data/icons/font-awesome/1792/trash-o-512.png" width="75px" height="75px" alt=""/>
         <p class="selection">Clear Calendar</p>
       </div>
@@ -52,6 +52,10 @@
       </div>
     </div>
     <script>
+
+      function clearFunct() {
+        clear();
+      }
 
       var pastDate = new Date();
       pastDate.setDate(pastDate.getDate() - 1);
