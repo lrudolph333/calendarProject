@@ -4,19 +4,21 @@
     <meta charset="utf-8">
     <title>To-Do List</title>
   </head>
+  {{allItems}}
   {{user.realName}}
   <body>
     <div class="">
       <form class="form" action="todo.html" method="post">
         <input type="hidden" name="user" value={{user}}>
+        <<input type="hidden" name="allItems" value="{{allItems}}">
         <label for="name">Name</label>
         <input type="text" name="name">
         <br>
         <label for="date">Date</label>
-        <input type="text" name="date">
+        <input type="date" name="date">
         <br>
         <label for="time">Time</label>
-        <input type="text" name="time">
+        <input type="time" name="time">
         <br>
         <label for="urgency">Urgency:</label>
         <select class="form" name="urgency">

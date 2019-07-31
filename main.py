@@ -26,9 +26,19 @@ class ToDoListPage(webapp2.RequestHandler):
         to_do_template = jinja_env.get_template('templates/todo.html')
         self.response.headers['Content-Type'] = "text/html"
         id = self.request.get("userID")
+        allItems = {}
         values = {
-            "user": UserCredentials.get_by_id(int(id))
+            "user": UserCredentials.get_by_id(int(id)),
+            #"newToDoItem": self.request.get("newItem")
+            "allItems": allItems,
         }
+        #newItem = self.request.get("newItem")
+        newItem = toDoItem(time =self.request.get("time"),
+                           date =self.request.get("date"),
+                           name=self.request.get("name"),
+                           urgency=self.request.get("urgency"),
+                           note=self.request.get("note"))
+        allItems.update({newItem.key : newItem})
         self.response.write(to_do_template.render(values))
 
 class SchedulePage(webapp2.RequestHandler):
