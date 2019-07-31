@@ -33,6 +33,12 @@ class ToDoListPage(webapp2.RequestHandler):
         }
         self.response.write(to_do_template.render(values))
 
+class toDoCSS(webapp2.RequestHandler):
+    def get(self):
+        self.response.headers['Content-Type'] = "text/css";
+        f = open("stylesheet/todo.css", "r")
+        self.response.write(f.read());
+
 class addToDoItemParser(webapp2.RequestHandler):
     def post(self):
         to_do_template = jinja_env.get_template('templates/newToDoItem.html')
@@ -326,6 +332,7 @@ app = webapp2.WSGIApplication([
     ('/stylesheet/login.css', LoginCSS),
     ('/stylesheet/dashboard.css', DashboardCSS),
     ('/todo.html', ToDoListPage),
+    ('todo.css', toDoListCSS),
     ('/schedule.html', SchedulePage),
     ('/profile.html', ProfilePage),
     ('/searchCal.html', SearchCalPage),
