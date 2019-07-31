@@ -12,3 +12,4 @@ Things that still need done:
   - Ensure proper passing of session data throughout site
   - Display month-style text of Calender
   - Display Today/Yesterday/Tomorrow/Wends on Calender
+  - Favicon
