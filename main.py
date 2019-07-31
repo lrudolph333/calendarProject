@@ -199,8 +199,43 @@ class QueryParser(webapp2.RequestHandler):
 
 class SearchCalParser(webapp2.RequestHandler):
     def post(self):
+
+        title = self.request.get("title");
+        date = self.request.get("date");
+        time = self.request.get("time");
+        location = self.request.get("location");
+
+        query = CalendarItem.query();
+
+        if title != '':
+            query = query.filter(CalendarItem.title == title);
+
+        if date != '':
+            query = query.filter(CalendarItem.date == date);
+
+        if time != '':
+            query = query.filter(CalendarItem.time == time);
+
+        if location != '':
+            query = query.filter(CalendarItem.location == location);
+
+        response = query.fetch();
+
+        events = [];
+
+        for event in response:
+
+            data = {
+                "title": str(event.title),
+                "location": str(event.location),
+                "date": str(event.date),
+                "time": str(event.time)
+            }
+
+            events.append(data);
+
         self.response.headers['Content-Type'] = "text/plain";
-        self.response.write("[]");
+        self.response.write(str(events));
 
 class SearchCalPage(webapp2.RequestHandler):
     def post(self):
