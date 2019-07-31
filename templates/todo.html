@@ -3,9 +3,12 @@
   <head>
     <meta charset="utf-8">
     <title>To-Do List</title>
+    <link rel="stylesheet"  type="text/css" href="../stylesheet/todo.css">
   </head>
-  {{user.realName}}
   <body>
+    <div id="header">
+      {{user.realName}}
+    </div>
     <div class="">
       <form class="form" action="addToDoItem" method="post">
         <input type="submit" name="Submit" value="Add New Item">

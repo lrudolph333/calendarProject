@@ -1,0 +1,13 @@
+body {
+  display: flex;
+  background-color: red;
+}
+
+#header {
+  height: 50px;
+  width: 100%;
+  background-color: grey;
+  text-align: right;
+  font-size: 30px;
+  font-family: 'Raleway', sans-serif;
+}
