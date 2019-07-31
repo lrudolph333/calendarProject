@@ -17,7 +17,8 @@ class CalendarPage(webapp2.RequestHandler):
         self.response.headers['Content-Type'] = "text/html"
         values = {
             "userID": self.request.get("userID"),
-            "username": self.request.get("username")
+            "username": self.request.get("username"),
+            "realName": self.request.get("realName"),
         }
         self.response.write(calendar_template.render(values));
 
@@ -116,7 +117,7 @@ class DashboardPage(webapp2.RequestHandler):
         values = {
             "userID": self.request.get("userID"),
             "username": UserCredentials.get_by_id(int(self.request.get("userID"))).username,
-            "realName": self.request.get("realName"),
+            "realName": UserCredentials.get_by_id(int(self.request.get("userID"))).realName,
         }
         self.response.write(dashboardTemplate.render(values));
 
@@ -133,6 +134,7 @@ class NewCalendarItemPage(webapp2.RequestHandler):
         values = {
             "userID": self.request.get("userID"),
             "username": self.request.get("username"),
+            "realName": self.request.get("realName"),
         }
         self.response.write(dashboardTemplate.render(values));
 
@@ -243,6 +245,7 @@ class SearchCalPage(webapp2.RequestHandler):
         values = {
             "userID": self.request.get("userID"),
             "username": self.request.get("username"),
+            "realName": self.request.get("realName"),
         }
         self.response.write(dashboardTemplate.render(values));
 
