@@ -33,7 +33,7 @@ class ToDoListPage(webapp2.RequestHandler):
         }
         self.response.write(to_do_template.render(values))
 
-class toDoCSS(webapp2.RequestHandler):
+class toDoListCSS(webapp2.RequestHandler):
     def get(self):
         self.response.headers['Content-Type'] = "text/css";
         f = open("stylesheet/todo.css", "r")
@@ -89,6 +89,7 @@ class ProfilePage(webapp2.RequestHandler):
         user = UserCredentials.get_by_id(int(id));
 
         user.username = username;
+        user.realName = realName;
 
         if(password) :
             user.password = password;
@@ -332,7 +333,7 @@ app = webapp2.WSGIApplication([
     ('/stylesheet/login.css', LoginCSS),
     ('/stylesheet/dashboard.css', DashboardCSS),
     ('/todo.html', ToDoListPage),
-    ('todo.css', toDoListCSS),
+    ('/todo.css', toDoListCSS),
     ('/schedule.html', SchedulePage),
     ('/profile.html', ProfilePage),
     ('/searchCal.html', SearchCalPage),
