@@ -151,7 +151,7 @@ class SignupParser(webapp2.RequestHandler):
         if userAlreadyExists:
             self.response.write("Sorry, that user already exists");
         else:
-            newUser = UserCredentials(username=username, password=password);
+            newUser = UserCredentials(username=username, password=password, realName=username);
             key = newUser.put();
             self.response.write(key.integer_id());
 
