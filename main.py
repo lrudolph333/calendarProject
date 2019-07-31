@@ -49,13 +49,12 @@ class ProfilePage(webapp2.RequestHandler):
         self.response.headers['Content-Type'] = "text/html"
         id = self.request.get("userID")
         userDict = UserCredentials.get_by_id(int(id))
-        realName = self.request.get("realName")
-        userDict.realName = realName
-        if len(userDict.realName) == 0:
-            realName = self.request.get("realName")
+        realName = userDict.realName
+        newRealName = self.request.get("realName")
+        if len(newRealName) == 0:
             userDict.realName = realName
         else:
-            userDict.realName
+            userDict.realName = newRealName
         userDict.put()
         values = {
             "user": userDict,
