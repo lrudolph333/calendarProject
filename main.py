@@ -293,6 +293,12 @@ class SearchCalCSS(webapp2.RequestHandler):
         f = open("stylesheet/searchCal.css", "r")
         self.response.write(f.read());
 
+class Favicon(webapp2.RequestHandler):
+    def get(self):
+        self.response.headers['Content-Type'] = "image/x-icon";
+        f = open("favicon.ico", "r")
+        self.response.write(f.read());
+
 app = webapp2.WSGIApplication([
     ('/', LoginPage),
     ('/login', LoginParser),
@@ -313,5 +319,6 @@ app = webapp2.WSGIApplication([
     ('/stylesheet/searchCal.css', SearchCalCSS),
     ('/searchCalParser', SearchCalParser),
     ('/addToDoItem', addToDoItemParser),
+    ('/favicon.ico', Favicon)
 
 ], debug=True);
