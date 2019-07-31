@@ -3,7 +3,6 @@
 
 Things that still need done:
 
-  - Prevent rapid pressing of event create button
   - Ability to delete events
   - About Us Page
   - Notifications Page
