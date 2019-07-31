@@ -52,13 +52,16 @@ class addToDoItemParser(webapp2.RequestHandler):
             "orange": 2,
             "yellow": 1,
         }
-        newItem = ToDoItem(time =self.request.get("time"),
+
+        if self.request.get("time") :
+
+            newItem = ToDoItem(time =self.request.get("time"),
                            date =self.request.get("date"),
                            name=self.request.get("name"),
                            urgency=urgencyMap.get(self.request.get("urgency")),
                            note=self.request.get("note"),
                            ownerID=id)
-        newItem.put()
+            newItem.put()
         values = {
             "user": userDict,
         }
