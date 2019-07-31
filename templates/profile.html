@@ -1,14 +1,12 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html>
   <head>
-    <meta charset="utf-8">
     <title>Account</title>
+    <link rel="stylesheet" type="text/css" href="stylesheet/profile.css">
   </head>
   <body>
-
     <img src="https://static.thenounproject.com/png/219377-200.png" width="75px" height="75px"alt="">
     <h2>Account</h2>
-
     <form action="profile.html" method="post">
       <p>Username: {{username}}</p>
       <p>Change Username: <input type="text" name="username" value="{{username}}"></p>
@@ -19,7 +17,6 @@
       <p>Change Name: <input type="text" name="realName" value="{{realName}}"></p>
       <input type="submit">
     </form>
-
     <form action="dashboard.html" method="post">
       <input type="hidden" name="userID" value="{{userID}}">
       <input type="hidden" name="realName" value="{{realName}}">
