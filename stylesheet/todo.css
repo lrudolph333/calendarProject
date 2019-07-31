@@ -1,3 +1,13 @@
 body {
+  display: flex;
+  padding: 10px;
+}
+
+#header {
+  height: 30px;
+  width: 100%;
+  font-size: 15px;
+  font-family: 'Raleway', sans-serif;
   background-color: grey;
+  color: white;
 }
