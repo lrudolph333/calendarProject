@@ -5,5 +5,46 @@
     <link rel="stylesheet" type="text/css" href="stylesheet/searchCal.css">
   </head>
   <body>
+    <form method="post" id="searchForm">
+      <h1>Search</h1>
+      <p>Title: <input type="text" name="title"></p>
+      <p>Date: <input type="text" name="date"></p>
+      <p>Time: <input type="text" name="time"></p>
+      <p>Location: <input type="text" name="location"></p>
+      <input type="submit">
+    </form>
+    <script>
+      document.getElementById("searchForm").addEventListener("submit", function(e) {
+
+        while(document.body.childNodes.length > 5) {
+          document.body.removeChild(document.body.lastChild);
+        }
+
+        e.preventDefault();
+        var formData = new FormData(document.getElementById("searchForm"));
+
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+          if (this.readyState == 4 && this.status == 200) {
+            eval("var data = " + xhttp.responseText);
+            for(var i=0; i<data.length; i++) {
+              var event = data[i];
+              var newDiv = document.createElement("div");
+              newDiv.classList.add("event");
+              var title = document.createElement("p");
+              title.innerHTML = "<strong>"+event.title+"</strong>"
+              var description = document.createElement("p");
+              description.innerHTML = event.date + " " + event.time + " at " + event.location;
+              newDiv.appendChild(title);
+              newDiv.appendChild(description);
+              document.body.appendChild(newDiv);
+            }
+          }
+        };
+        xhttp.open("POST", "/searchCalParser", true);
+        xhttp.send(formData);
+
+      });
+    </script>
   </body>
 </html>
