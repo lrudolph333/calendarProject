@@ -161,6 +161,8 @@ class QueryParser(webapp2.RequestHandler):
         self.response.headers['Content-Type'] = "text/plain";
         filterBy = self.request.get("filterBy");
         filter = self.request.get("filter");
+        userID = self.request.get("userID");
+
         if filterBy == "week":
             startDate = datetime.strptime(filter, "%m/%d/%Y");
             dates = [];
@@ -181,7 +183,7 @@ class QueryParser(webapp2.RequestHandler):
 
                 dateString = startMonth + "/" + startDay + "/" + startYear;
 
-                eventList = CalendarItem.query().filter(CalendarItem.date == dateString).fetch();
+                eventList = CalendarItem.query().filter(CalendarItem.date == dateString && CalendarItem.userID == userID).fetch();
 
                 dayEvents = [];
 
@@ -205,6 +207,7 @@ class SearchCalParser(webapp2.RequestHandler):
         date = self.request.get("date");
         time = self.request.get("time");
         location = self.request.get("location");
+        userID = self.request.get("userID");
 
         query = CalendarItem.query();
 
@@ -219,6 +222,8 @@ class SearchCalParser(webapp2.RequestHandler):
 
         if location != '':
             query = query.filter(CalendarItem.location == location);
+
+        query = query.filter(CalendarItem.userID == userID);
 
         response = query.fetch();
 

@@ -92,6 +92,7 @@
         var formData = new FormData();
         formData.append("filter", dateString);
         formData.append("filterBy", "week");
+        formData.append("userID", "{{userID}}");
 
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function() {
