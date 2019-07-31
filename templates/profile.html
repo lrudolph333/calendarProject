@@ -1,44 +1,26 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html>
   <head>
-    <meta charset="utf-8">
     <title>Account</title>
+    <link rel="stylesheet" type="text/css" href="stylesheet/profile.css">
   </head>
   <body>
     <img src="https://static.thenounproject.com/png/219377-200.png" width="75px" height="75px"alt="">
-    <h2>Account</h2>
-    <div class="">
-      Username: {{user.username}}
-      <br>
-      <br>
-      <label for="newUserName">Change Username:</label>
-      <input type="text" name="newUserName">
-      <input type="submit" name="Submit" value="Submit">
-      <br>
-      <br>
-      Password: {{user.password}}
-      <br>
-      <br>
-      <label for="newPassword">Change Password:</label>
-      <input type="text" name="newPassword">
-      <input type="submit" name="Submit" value="Submit">
-      <br>
-      <br>
-      RealName: {{user.realName}}
-    </div>
-    <form class="form" action="profile.html" method="post">
-      <!--<input type="text" name="realName" value="Real Name">-->
-      <input type="hidden" name="userID" value="{{user.key.integer_id()}}"/>
-      <br>
-      <label for="realName">Input Real Name:</label>
-      <input type="text" name="realName">
-      <input type="submit" name="Submit" value="Submit">
-      <br>
-      <br>
+    <h2>Profile</h2>
+    <form action="profile.html" method="post">
+      <p>Username: {{username}}</p>
+      <p>Change Username: <input type="text" name="username" value="{{username}}"></p>
+      <p>Password: {{password}}</p>
+      <p>Change Password: <input type="text" name="password" value="{{password}}"></p>
+      <input type="hidden" value="{{userID}}" name="userID">
+      <p>Real Name: {{realName}}</p>
+      <p>Change Name: <input type="text" name="realName" value="{{realName}}"></p>
+      <input type="submit">
     </form>
-    <form class="form" action="dashboard.html" method="post">
-      <input type="hidden" name="userID" value="{{user.key.integer_id()}}">
-      <<input type="hidden" name="realName" value="{{user.realName}}">
+    <form action="dashboard.html" method="post">
+      <input type="hidden" name="userID" value="{{userID}}">
+      <input type="hidden" name="realName" value="{{realName}}">
+      <input type="hidden" name="username" value="{{username}}">
       <input type="submit" name="Submit" value="Go Back">
     </form>
   </body>

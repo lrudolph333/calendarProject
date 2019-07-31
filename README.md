@@ -8,4 +8,3 @@ Things that still need done:
   - Notifications Page
   - Styling for To-Do List, Profile
   - Fetching of events for To-Do List
-  - Ensure proper passing of session data throughout site

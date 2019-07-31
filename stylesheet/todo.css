@@ -1,5 +1,6 @@
 body {
   display: flex;
+<<<<<<< HEAD
   background-color: red;
 }
 
@@ -10,4 +11,16 @@ body {
   text-align: right;
   font-size: 30px;
   font-family: 'Raleway', sans-serif;
+=======
+  padding: 10px;
+}
+
+#header {
+  height: 30px;
+  width: 100%;
+  font-size: 15px;
+  font-family: 'Raleway', sans-serif;
+  background-color: grey;
+  color: white;
+>>>>>>> d47450f9aee2688d8ff23e1c15cd8e9f7fa51a61
 }

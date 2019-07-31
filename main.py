@@ -33,6 +33,12 @@ class ToDoListPage(webapp2.RequestHandler):
         }
         self.response.write(to_do_template.render(values))
 
+class toDoListCSS(webapp2.RequestHandler):
+    def get(self):
+        self.response.headers['Content-Type'] = "text/css";
+        f = open("stylesheet/todo.css", "r")
+        self.response.write(f.read());
+
 class addToDoItemParser(webapp2.RequestHandler):
     def post(self):
         to_do_template = jinja_env.get_template('templates/newToDoItem.html')
@@ -73,18 +79,32 @@ class ProfilePage(webapp2.RequestHandler):
     def post(self):
         profile_template = jinja_env.get_template("/templates/profile.html")
         self.response.headers['Content-Type'] = "text/html"
+
         id = self.request.get("userID")
-        userDict = UserCredentials.get_by_id(int(id))
-        realName = userDict.realName
-        newRealName = self.request.get("realName")
-        if len(newRealName) == 0:
-            userDict.realName = realName
+
+        username = self.request.get("username");
+        password = self.request.get("password");
+        realName = self.request.get("realName");
+
+        user = UserCredentials.get_by_id(int(id));
+
+        user.username = username;
+        user.realName = realName;
+
+        if(password) :
+            user.password = password;
         else:
-            userDict.realName = newRealName
-        userDict.put()
+            password = user.password;
+
+        user.put();
+
         values = {
-            "user": userDict,
+            "username": username,
+            "password": password,
+            "realName": realName,
+            "userID": id
         }
+
         self.response.write(profile_template.render(values))
 
 class CalItemParser(webapp2.RequestHandler):
@@ -131,7 +151,7 @@ class SignupParser(webapp2.RequestHandler):
         if userAlreadyExists:
             self.response.write("Sorry, that user already exists");
         else:
-            newUser = UserCredentials(username=username, password=password);
+            newUser = UserCredentials(username=username, password=password, realName=username);
             key = newUser.put();
             self.response.write(key.integer_id());
 
@@ -293,6 +313,12 @@ class SearchCalCSS(webapp2.RequestHandler):
         f = open("stylesheet/searchCal.css", "r")
         self.response.write(f.read());
 
+class ProfileCSS(webapp2.RequestHandler):
+    def get(self):
+        self.response.headers['Content-Type'] = "text/css";
+        f = open("stylesheet/profile.css", "r")
+        self.response.write(f.read());
+
 class Favicon(webapp2.RequestHandler):
     def get(self):
         self.response.headers['Content-Type'] = "image/x-icon";
@@ -313,10 +339,12 @@ app = webapp2.WSGIApplication([
     ('/stylesheet/login.css', LoginCSS),
     ('/stylesheet/dashboard.css', DashboardCSS),
     ('/todo.html', ToDoListPage),
+    ('/stylesheet/todo.css', toDoListCSS),
     ('/schedule.html', SchedulePage),
     ('/profile.html', ProfilePage),
     ('/searchCal.html', SearchCalPage),
     ('/stylesheet/searchCal.css', SearchCalCSS),
+    ('/stylesheet/profile.css', ProfileCSS),
     ('/searchCalParser', SearchCalParser),
     ('/addToDoItem', addToDoItemParser),
     ('/favicon.ico', Favicon)
