@@ -319,10 +319,30 @@ class NotificationsPage(webapp2.RequestHandler):
     def post(self):
         dashboardTemplate = jinja_env.get_template('templates/notifications.html');
         self.response.headers['Content-Type'] = "text/html";
+
+        userID = self.request.get("userID")
+        username = self.request.get("username")
+        realName = self.request.get("realName")
+
+        query1 = ToDoItem.query().filter(ToDoItem.ownerID == userID);
+        query2 = CalendarItem.query().filter(CalendarItem.ownerID == userID);
+        TodoItems = query1.fetch();
+        CalendarItems = query2.fetch();
+
+        for item in TodoItems:
+            if (((datetime.strptime(item.date + " " ++ item.time, "%m/%d/%Y %H:%M") - datetime.now()).days < 0) or (datetime.strptime(item.date + " " + item.time, "%m/%d/%Y %H:%M") - datetime.now()).days > 1) :
+                TodoItems.remove(item);
+
+        for item in CalendarItems:
+            if (((datetime.strptime(item.date + " " + item.time, "%m/%d/%Y %H:%M") - datetime.now()).days < 0) or (datetime.strptime(item.date + " " + item.time, "%m/%d/%Y %H:%M") - datetime.now()).days > 1) :
+                CalendarItems.remove(item);
+
         values = {
-            "userID": self.request.get("userID"),
-            "username": self.request.get("username"),
-            "realName": self.request.get("realName"),
+            "userID": userID,
+            "username": username,
+            "realName": realName,
+            "TodoItems": TodoItems,
+            "CalendarItems": CalendarItems
         }
         self.response.write(dashboardTemplate.render(values));
 
