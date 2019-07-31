@@ -183,7 +183,7 @@ class QueryParser(webapp2.RequestHandler):
 
                 dateString = startMonth + "/" + startDay + "/" + startYear;
 
-                eventList = CalendarItem.query().filter(CalendarItem.date == dateString and CalendarItem.userID == userID).fetch();
+                eventList = CalendarItem.query().filter(CalendarItem.date == dateString).filter(CalendarItem.ownerID == userID).fetch();
 
                 dayEvents = [];
 
@@ -223,7 +223,7 @@ class SearchCalParser(webapp2.RequestHandler):
         if location != '':
             query = query.filter(CalendarItem.location == location);
 
-        query = query.filter(CalendarItem.userID == userID);
+        query = query.filter(CalendarItem.ownerID == userID);
 
         response = query.fetch();
 
