@@ -27,10 +27,35 @@ class ToDoListPage(webapp2.RequestHandler):
         to_do_template = jinja_env.get_template('templates/todo.html')
         self.response.headers['Content-Type'] = "text/html"
         id = self.request.get("userID")
+        userDict = UserCredentials.get_by_id(int(id))
         values = {
-            "user": UserCredentials.get_by_id(int(id))
+            "user": userDict,
         }
         self.response.write(to_do_template.render(values))
+
+class addToDoItemParser(webapp2.RequestHandler):
+    def post(self):
+        to_do_template = jinja_env.get_template('templates/newToDoItem.html')
+        self.response.headers['Content-Type'] = "text/html"
+        id = self.request.get("userID")
+        userDict = UserCredentials.get_by_id(int(id))
+        urgencyMap = {
+            "red": 3,
+            "orange": 2,
+            "yellow": 1,
+        }
+        newItem = ToDoItem(time =self.request.get("time"),
+                           date =self.request.get("date"),
+                           name=self.request.get("name"),
+                           urgency=urgencyMap.get(self.request.get("urgency")),
+                           note=self.request.get("note"),
+                           ownerID=id)
+        newItem.put()
+        values = {
+            "user": userDict,
+        }
+        self.response.write(to_do_template.render(values))
+
 
 class SchedulePage(webapp2.RequestHandler):
     def post(self):
@@ -286,6 +311,7 @@ app = webapp2.WSGIApplication([
     ('/profile.html', ProfilePage),
     ('/searchCal.html', SearchCalPage),
     ('/stylesheet/searchCal.css', SearchCalCSS),
-    ('/searchCalParser', SearchCalParser)
+    ('/searchCalParser', SearchCalParser),
+    ('/addToDoItem', addToDoItemParser),
 
 ], debug=True);

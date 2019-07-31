@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Add To-Do Item</title>
+  </head>
+  helloWorld
+  <body>
+    <div class="">
+        <form class="form" action="addToDoItem" method="post">
+          <input type="hidden" name="userID" value="{{user.key.integer_id()}}"/>
+          <label for="name">Name</label>
+          <input type="text" name="name">
+          <br>
+          <label for="date">Date</label>
+          <input type="date" name="date">
+          <br>
+          <label for="time">Time</label>
+          <input type="time" name="time">
+          <br>
+          <label for="urgency">Urgency:</label>
+          <select class="form" name="urgency">
+              <option value="red">Red</option>
+              <option value="orange">Orange</option>
+              <option value="yellow">Yellow</option>
+          </select>
+          <br>
+          <label for="note">Note:</label>
+          <textarea name="note" rows="5"></textarea>
+          <input type="submit" name="Submit" value="Submit">
+          <br>
+        </form>
+      </div>
+      <div class="">
+          
+        <form class="form" action="todo.html" method="post">
+          <input type="hidden" name="userID" value="{{user.key.integer_id()}}">
+          <input type="submit" name="goBackButton" value="Go Back">
+        </form>
+      </div>
+
+  </body>
+</html>
