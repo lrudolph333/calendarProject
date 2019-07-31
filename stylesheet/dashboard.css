@@ -56,28 +56,28 @@ body {
   justify-content: center;
 }
 
-#box1 {
-  background-color: #FFDAC1;
-}
-
-#box2 {
-  background-color: #FFB7B2;
-}
-
-#box3 {
-  background-color:  #FF9AA2;
-}
-
-#box4 {
-  background-color: #E2F0CB;
+#box6 {
+  background-color: #c7ceea;
 }
 
 #box5 {
-  background-color:  #B5EAD7;
+  background-color: #b5ead7;
 }
 
-#box6 {
-  background-color:  #C7CEEA;
+#box4 {
+  background-color:  #e2f0cb;
+}
+
+#box3 {
+  background-color: #ff9aa2;
+}
+
+#box2 {
+  background-color:  #ffb7b2;
+}
+
+#box1 {
+  background-color:  #ffdac1;
 }
 
 .text {

@@ -7,7 +7,7 @@
   z-index: 1;
   top: 0;
   left: 0;
-  background-color: white;
+  background-color: #ffd3d0;
   overflow: hidden;
 }
 
@@ -20,7 +20,7 @@ body {
   margin: 0;
   margin-left: 9%;
   height: 15%;
-  background-color: red;
+  background-color: #ffb7b2;
 }
 
 .weekButton {
@@ -36,7 +36,7 @@ body {
 }
 
 #rightButton {
-  background-color: blue;
+  background-color: #ff9f99;
   float: left;
   width: 20.8%;
   border-right-style: none;
@@ -44,7 +44,7 @@ body {
 }
 
 #leftButton {
-  background-color: blue;
+  background-color: #ff9f99;
 
 }
 
@@ -89,7 +89,7 @@ text-align:middle;
   margin-right: auto;
   text-align: center;
   display: block;
-  border-color: white;
+  border-color: #ffd3d0;
   border-bottom-style: solid;
   border-width: thin;
   margin-top: 0px;
@@ -109,7 +109,7 @@ text-align:middle;
   margin-left: 9%;
   height: 100%;
   width: 92%;
-  background-color: #CCCCCC;
+  background-color: #ffe9e7;
   display: block;
   position: absolute;
 }
