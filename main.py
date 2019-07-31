@@ -73,18 +73,31 @@ class ProfilePage(webapp2.RequestHandler):
     def post(self):
         profile_template = jinja_env.get_template("/templates/profile.html")
         self.response.headers['Content-Type'] = "text/html"
+
         id = self.request.get("userID")
-        userDict = UserCredentials.get_by_id(int(id))
-        realName = userDict.realName
-        newRealName = self.request.get("realName")
-        if len(newRealName) == 0:
-            userDict.realName = realName
+
+        username = self.request.get("username");
+        password = self.request.get("password");
+        realName = self.request.get("realName");
+
+        user = UserCredentials.get_by_id(int(id));
+
+        user.username = username;
+
+        if(password) :
+            user.password = password;
         else:
-            userDict.realName = newRealName
-        userDict.put()
+            password = user.password;
+
+        user.put();
+
         values = {
-            "user": userDict,
+            "username": username,
+            "password": password,
+            "realName": realName,
+            "userID": id
         }
+
         self.response.write(profile_template.render(values))
 
 class CalItemParser(webapp2.RequestHandler):
