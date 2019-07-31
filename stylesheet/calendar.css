@@ -1,5 +1,6 @@
 .sidebar {
   margin: 0;
+  font-family: 'Raleway', sans-serif;
   padding: 0;
   height: 100%;
   width: 9%;
@@ -26,6 +27,7 @@ body {
 .weekButton {
 
   float: left;
+  font-family: 'Raleway', sans-serif;
   color: white;
   width: 19%;
   border-right-style: solid;
@@ -37,6 +39,7 @@ body {
 
 #rightButton {
   background-color: #ff9f99;
+  font-family: 'Raleway', sans-serif;
   float: left;
   width: 20.8%;
   border-right-style: none;
@@ -45,12 +48,14 @@ body {
 
 #leftButton {
   background-color: #ff9f99;
+  font-family: 'Raleway', sans-serif;
 
 }
 
 .currentWeek {
 
   float: left;
+  font-family: 'Raleway', sans-serif;
   width: 60%;
   border-right-style: solid;
   border-right-color: white;
@@ -98,6 +103,7 @@ text-align:middle;
 }
 .selection text {
   text-align: justify;
+  font-family: 'Raleway', sans-serif;
 }
 
 .selection img {
@@ -116,6 +122,7 @@ text-align:middle;
 
 .day {
   float: left;
+  font-family: 'Raleway', sans-serif;
   height: 100%;
   width: 14%;
   border-right-color: black;
