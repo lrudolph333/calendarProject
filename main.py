@@ -167,9 +167,9 @@ class QueryParser(webapp2.RequestHandler):
             eventList = CalendarItem.query().filter(CalendarItem.ownerID == userID).fetch();
 
             for event in eventList:
-                CalendarItem.delete(event.key);
+                event.key.delete();
 
-                self.response.write("Success");
+            self.response.write("Success");
 
         elif filterBy == "week":
             startDate = datetime.strptime(filter, "%m/%d/%Y");

@@ -76,6 +76,12 @@
 
       function fetchEvents() {
 
+        for(var i=1; i<8; i++) {
+          while(document.getElementById("day" + i).childNodes.length > 2) {
+            document.getElementById("day" + i).removeChild(document.getElementById("day" + i).lastChild);
+          }
+        }
+
         var month = pastDate.getMonth() + 1 + "";
         var day = pastDate.getDate() + "";
         var year = pastDate.getFullYear();
@@ -189,6 +195,20 @@
       }
 
       function clear() {
+
+        var formData = new FormData();
+        formData.append("filter", "");
+        formData.append("filterBy", "clearAll");
+        formData.append("userID", "{{userID}}");
+
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+          if (this.readyState == 4 && this.status == 200) {
+            window.setTimeout(fetchEvents, 500);
+          }
+        }
+        xhttp.open("POST", "/queryparser", true);
+        xhttp.send(formData);
 
       }
 
