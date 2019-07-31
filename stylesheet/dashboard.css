@@ -7,8 +7,8 @@ h2 {
 body {
 	width: 100wh;
 	height: 100vh;
-  background-color: #5e91ff;
-	 /* background-image: linear-gradient(to bottom right, #eba9d0, #eed5f7);; */
+  background-color: #c3e2fa;
+	 /* background-image: linear-gradient(to top, white, #24a0ff);; */
 }
 #qod {
   color:white;
@@ -48,11 +48,36 @@ body {
   width: 80%;
   margin-left: auto;
   margin-right: auto;
-  background-image: linear-gradient(to bottom right, white, #1a97eb);
+  /* background-color: #94d0ff; */
+  /* background-image: linear-gradient(to bottom right, white, #1a97eb); */
   text-align: center;
   border-radius: 10%;
   display: flex;
   justify-content: center;
+}
+
+#box1 {
+  background-color: #FFDAC1;
+}
+
+#box2 {
+  background-color: #FFB7B2;
+}
+
+#box3 {
+  background-color:  #FF9AA2;
+}
+
+#box4 {
+  background-color: #E2F0CB;
+}
+
+#box5 {
+  background-color:  #B5EAD7;
+}
+
+#box6 {
+  background-color:  #C7CEEA;
 }
 
 .text {
