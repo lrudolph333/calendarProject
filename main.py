@@ -33,10 +33,15 @@ class ToDoListPage(webapp2.RequestHandler):
             "allItems": allItems,
         }
         #newItem = self.request.get("newItem")
-        newItem = toDoItem(time =self.request.get("time"),
+        urgencyMap = {
+            "red": 3,
+            "orange": 2,
+            "yellow": 1,
+        }
+        newItem = ToDoItem(time =self.request.get("time"),
                            date =self.request.get("date"),
                            name=self.request.get("name"),
-                           urgency=self.request.get("urgency"),
+                           urgency=urgencyMap.get(self.request.get("urgency")),
                            note=self.request.get("note"))
         allItems.update({newItem.key : newItem})
         self.response.write(to_do_template.render(values))
