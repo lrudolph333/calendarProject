@@ -63,7 +63,7 @@
       var futureDate = new Date();
       futureDate.setDate(futureDate.getDate() + 5);
 
-      document.getElementById("currentWeekText").innerHTML = pastDate.toLocaleDateString() + " - " + futureDate.toLocaleDateString();
+      document.getElementById("currentWeekText").innerHTML = pastDate.toDateString() + " - " + futureDate.toDateString();
 
       for(var i=1; i<8; i++) {
 
@@ -71,7 +71,7 @@
         d.setDate(pastDate.getDate() - 1 + i);
         var dayDiv = document.getElementById("day" + i);
         var p = document.createElement("p");
-        p.innerHTML = d.toLocaleDateString();
+        p.innerHTML = d.toDateString();
         dayDiv.appendChild(p);
 
       }
@@ -220,7 +220,7 @@
 
           pastDate.setDate(pastDate.getDate() - 7);
           futureDate.setDate(futureDate.getDate() - 7);
-          document.getElementById("currentWeekText").innerHTML = pastDate.toLocaleDateString() + " - " + futureDate.toLocaleDateString();
+          document.getElementById("currentWeekText").innerHTML = pastDate.toDateString() + " - " + futureDate.toDateString();
 
           for(var i=1; i<8; i++) {
 
@@ -233,7 +233,7 @@
             }
 
             var p = document.createElement("p");
-            p.innerHTML = d.toLocaleDateString();
+            p.innerHTML = d.toDateString();
             dayDiv.appendChild(p);
 
           }
@@ -246,7 +246,7 @@
 
         pastDate.setDate(pastDate.getDate() + 7);
         futureDate.setDate(futureDate.getDate() + 7);
-        document.getElementById("currentWeekText").innerHTML = pastDate.toLocaleDateString() + " - " + futureDate.toLocaleDateString();
+        document.getElementById("currentWeekText").innerHTML = pastDate.toDateString() + " - " + futureDate.toDateString();
 
         for(var i=1; i<8; i++) {
 
@@ -259,7 +259,7 @@
           }
 
           var p = document.createElement("p");
-          p.innerHTML = d.toLocaleDateString();
+          p.innerHTML = d.toDateString();
           dayDiv.appendChild(p);
 
         }
