@@ -183,7 +183,7 @@ class QueryParser(webapp2.RequestHandler):
 
                 dateString = startMonth + "/" + startDay + "/" + startYear;
 
-                eventList = CalendarItem.query().filter(CalendarItem.date == dateString && CalendarItem.userID == userID).fetch();
+                eventList = CalendarItem.query().filter(CalendarItem.date == dateString and CalendarItem.userID == userID).fetch();
 
                 dayEvents = [];
 
