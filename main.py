@@ -27,9 +27,11 @@ class ToDoListPage(webapp2.RequestHandler):
         to_do_template = jinja_env.get_template('templates/todo.html')
         self.response.headers['Content-Type'] = "text/html"
         id = self.request.get("userID")
+        itemList = ToDoItem.query().fetch()
         userDict = UserCredentials.get_by_id(int(id))
         values = {
             "user": userDict,
+            "toDoItems": itemList,
         }
         self.response.write(to_do_template.render(values))
 
