@@ -306,7 +306,8 @@ class SearchCalParser(webapp2.RequestHandler):
                 "title": str(event.title),
                 "location": str(event.location),
                 "date": str(event.date),
-                "time": str(event.time)
+                "time": str(event.time),
+                "id": str(event.key.integer_id())
             }
 
             events.append(data);
