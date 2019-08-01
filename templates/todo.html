@@ -10,13 +10,13 @@
       {{user.realName}}
     </div>
     <div id="addItem" class="button">
-      <form action="addToDoItem" method="post">
-        <input type="submit" name="Submit" value="Add New Item">
+      <form action="addToDoItem"  method="post">
+        <input type="submit" name="addToDoItem" value="Add New Item">
         <input type="hidden" name="userID" value="{{user.key.integer_id()}}">
       </form>
     </div>
-    <div id="goBack" class="button">
-      <form class="form" action="dashboard.html" method="post">
+    <div id="goBackContainer">
+      <form class="form" name="goBackButton" action="dashboard.html" method="post">
         <input type="hidden" name="userID" value="{{user.key.integer_id()}}">
         <input type="submit" name="goBackButton" value="Go Back">
       </form>
