@@ -52,6 +52,10 @@ h2 {
   font-style: italic;
 }
 
+.loginButtons:hover{
+  box-shadow:0 3px 6px 0 rgba(0, 0, 0, 0.3);
+}
+
 #loginInfo {
   margin: auto;
  width: 50%;

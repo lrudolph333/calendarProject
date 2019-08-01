@@ -3,7 +3,7 @@ body {
   margin: auto;
 	height: 90vh;
 	color: #fff;
-	background: linear-gradient(-45deg, #ffd3d0, #ffb7b2, #ff9f99, #ffe9e7);
+	background: linear-gradient(-45deg, #c3eedf, #b5ead7, #a2d2c1,#90bbac);
 	background-size: 400% 400%;
 	-webkit-animation: Gradient 5s ease infinite;
 	-moz-animation: Gradient 5s ease infinite;
@@ -19,6 +19,10 @@ body {
 
 .subButton {
   width: 90px;
+}
+
+.subButton:hover{
+  box-shadow:0 3px 6px 0 rgba(0, 0, 0, 0.3);
 }
 
 @-webkit-keyframes Gradient {

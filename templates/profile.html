@@ -12,20 +12,20 @@
     <img src="https://static.thenounproject.com/png/219377-200.png" width="75px" height="75px"alt="" class="center">
     <h2>Profile</h2>
     <form id = "AccountInfo" action="profile.html" method="post">
-      <p>Username: {{username}}</p>
+      <p>Current Username: {{username}}</p>
       <p>Change Username: <input type="text" name="username" value="{{username}}"></p>
-      <p>Password: {{password}}</p>
+      <p>Current Password: {{password}}</p>
       <p>Change Password: <input type="text" name="password" value="{{password}}"></p>
       <input type="hidden" value="{{userID}}" name="userID">
-      <p>Preferred Name: {{realName}}</p>
-      <p>Change Name: <input type="text" name="realName" value="{{realName}}"></p>
+      <p>Current Preferred Name: {{realName}}</p>
+      <p>Change Preferred Name: <input type="text" name="realName" value="{{realName}}"></p>
       <input type="submit" class="subButton">
     </form>
     <form class="center" action="dashboard.html" method="post">
       <input type="hidden" name="userID" value="{{userID}}">
       <input type="hidden" name="realName" value="{{realName}}">
       <input type="hidden" name="username" value="{{username}}">
-      <input type="submit" id="button" name="Submit" value="Go Back">
+      <input type="submit" class="subButton" id="button" name="Submit" value="Go Back">
     </form>
   </body>
 </html>
