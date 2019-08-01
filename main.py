@@ -331,6 +331,23 @@ class SearchCalCSS(webapp2.RequestHandler):
         f = open("stylesheet/searchCal.css", "r")
         self.response.write(f.read());
 
+class AboutPage(webapp2.RequestHandler):
+    def post(self):
+        dashboardTemplate = jinja_env.get_template('templates/aboutUs.html');
+        self.response.headers['Content-Type'] = "text/html";
+        values = {
+            "userID": self.request.get("userID"),
+            "username": self.request.get("username"),
+            "realName": self.request.get("realName"),
+        }
+        self.response.write(dashboardTemplate.render(values));
+
+class AboutCSS(webapp2.RequestHandler):
+    def get(self):
+        self.response.headers['Content-Type'] = "text/css";
+        f = open("stylesheet/aboutUs.css", "r")
+        self.response.write(f.read());
+
 class NotificationsPage(webapp2.RequestHandler):
     def post(self):
         dashboardTemplate = jinja_env.get_template('templates/notifications.html');
@@ -439,6 +456,8 @@ app = webapp2.WSGIApplication([
     ('/stylesheet/searchCal.css', SearchCalCSS),
     ('/notifications.html', NotificationsPage),
     ('/stylesheet/notifications.css', NotificationsCSS),
+    ('/aboutUs.html', AboutPage),
+    ('/stylesheet/aboutUs.css', AboutCSS),
     ('/stylesheet/profile.css', ProfileCSS),
     ('/stylesheet/newToDoItem.css', NewToDoItemCSS),
     ('/searchCalParser', SearchCalParser),
