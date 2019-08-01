@@ -16,8 +16,8 @@
     </form>
     <script>
 
-        var data1string = ("{{ToDoItems}}".replace(/&#39;/g, "\""));
-        var data2string = ("{{CalendarItems}}".replace(/&#39;/g, "\""));
+        var data1string = ("{{ToDoItems}}".replace(/&#39;/g, "'").replace(/&#34;/g, "\""));
+        var data2string = ("{{CalendarItems}}".replace(/&#39;/g, "'").replace(/&#34;/g, "\""));
 
         if("{{ToDoItems}}" != "") {
           eval("var data1 = " + data1string);
@@ -40,6 +40,7 @@
                         + "Occurs at " + data1[i].time + " on " + data1[i].date;
 
           document.getElementById("eventList").appendChild(div);
+          document.getElementById("eventList").appendChild(document.createElement("br"));
 
         }
 
@@ -50,9 +51,8 @@
                         + "Occurs at " + data2[i].time + " on " + data2[i].date;
 
           document.getElementById("eventList").appendChild(div);
+          document.getElementById("eventList").appendChild(document.createElement("br"));
         }
-
-        document.getElementById("eventList").appendChild(document.createElement("br"));
 
     </script>
   </body>
