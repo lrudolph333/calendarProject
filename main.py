@@ -333,19 +333,41 @@ class NotificationsPage(webapp2.RequestHandler):
         CalendarItems = query2.fetch();
 
         for item in TodoItems:
-            if (((datetime.strptime(item.date + " " ++ item.time, "%m/%d/%Y %H:%M") - datetime.now()).days < 0) or (datetime.strptime(item.date + " " + item.time, "%m/%d/%Y %H:%M") - datetime.now()).days > 1) :
+            if (((datetime.strptime(str(item.date) + " " + str(item.time), "%Y-%m-%d %H:%M") - datetime.now()).days < 0) or (datetime.strptime(str(item.date) + " " + str(item.time), "%Y-%m-%d %H:%M") - datetime.now()).days > 1) :
                 TodoItems.remove(item);
 
         for item in CalendarItems:
             if (((datetime.strptime(item.date + " " + item.time, "%m/%d/%Y %H:%M") - datetime.now()).days < 0) or (datetime.strptime(item.date + " " + item.time, "%m/%d/%Y %H:%M") - datetime.now()).days > 1) :
                 CalendarItems.remove(item);
 
+        item1 = [];
+        item2 = [];
+
+        for item in CalendarItems:
+            value = {
+                "time": str(item.time),
+                "date": str(item.date),
+                "title": str(item.title),
+                "location": str(item.location)
+            }
+            item2.append(value);
+
+        for item in TodoItems:
+            value = {
+                "time": str(item.time),
+                "date": str(item.date),
+                "name": str(item.name),
+                "urgency": str(item.urgency),
+                "note": str(item.note)
+            }
+            item1.append(value);
+
         values = {
             "userID": userID,
             "username": username,
             "realName": realName,
-            "TodoItems": TodoItems,
-            "CalendarItems": CalendarItems
+            "TodoItems": item1,
+            "CalendarItems": item2
         }
         self.response.write(dashboardTemplate.render(values));
 
