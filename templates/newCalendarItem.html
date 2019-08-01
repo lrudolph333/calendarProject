@@ -12,8 +12,8 @@
       <p>Time (HH:MM): <input pattern="(([0-1][0-9])|([2][0-3])):([0-5]+[0-9])" type="text" required name="time"></p>
       <p>Location: <input type="text" required name="location"></p>
       <input type="hidden" value="{{userID}}" name="userID">
-      <input id="subButton" type="submit">
-      <button onclick="back()">Cancel</button>
+      <input class= "addButtons" id="subButton" type="submit">
+      <button class="addButtons" onclick="back()">Cancel</button>
     </form>
     <script>
       function back() {

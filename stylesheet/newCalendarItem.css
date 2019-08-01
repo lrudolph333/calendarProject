@@ -53,6 +53,10 @@ h2 {
   font-style: italic;
 }
 
+.addButtons:hover{
+  box-shadow:0 3px 6px 0 rgba(0, 0, 0, 0.3);
+}
+
 #formData {
   margin: auto;
  width: 50%;
