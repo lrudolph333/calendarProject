@@ -90,8 +90,10 @@ input[name=goBackButton] {
 
 .toDoItem {
   height: 40px;
+  width: 100%;
   background-color: black;
   color: white;
+  font-family: 'Raleway', sans-serif;
   margin-top: 1px;
   margin-bottom: 1px;
 }

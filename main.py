@@ -462,6 +462,7 @@ app = webapp2.WSGIApplication([
     ('/stylesheet/newToDoItem.css', NewToDoItemCSS),
     ('/searchCalParser', SearchCalParser),
     ('/addToDoItem', addToDoItemParser),
-    ('/favicon.ico', Favicon)
+    ('/favicon.ico', Favicon),
+    ('/viewItem.html', viewToDoItemPage)
 
 ], debug=True);
