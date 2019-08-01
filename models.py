@@ -17,6 +17,6 @@ class ToDoItem(ndb.Model):
     time = ndb.StringProperty(required=True)
     date = ndb.StringProperty(required=True)
     name = ndb.StringProperty(required=True)
-    urgency = ndb.IntegerProperty()
+    urgency = ndb.IntegerProperty(required=True)
     note = ndb.StringProperty()
     ownerID = ndb.StringProperty(required=True)
