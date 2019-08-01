@@ -326,24 +326,34 @@ class NotificationsPage(webapp2.RequestHandler):
         userID = self.request.get("userID")
         username = self.request.get("username")
         realName = self.request.get("realName")
+        date = self.request.get("date");
+
+        parseDate = datetime.strptime(date, "%m/%d/%Y %H:%M");
 
         query1 = ToDoItem.query().filter(ToDoItem.ownerID == userID);
         query2 = CalendarItem.query().filter(CalendarItem.ownerID == userID);
         TodoItems = query1.fetch();
+        TodoItems2 = [];
         CalendarItems = query2.fetch();
+        CalendarItems2 = [];
 
         for item in TodoItems:
-            if (((datetime.strptime(str(item.date) + " " + str(item.time), "%Y-%m-%d %H:%M") - datetime.now()).days < 0) or (datetime.strptime(str(item.date) + " " + str(item.time), "%Y-%m-%d %H:%M") - datetime.now()).days > 1) :
-                TodoItems.remove(item);
+
+            time = (datetime.strptime(str(item.date) + " " + str(item.time), "%Y-%m-%d %H:%M") - parseDate).total_seconds();
+
+            if time < 24 * 60 * 60 and time > 0:
+                TodoItems2.append(item)
 
         for item in CalendarItems:
-            if (((datetime.strptime(item.date + " " + item.time, "%m/%d/%Y %H:%M") - datetime.now()).days < 0) or (datetime.strptime(item.date + " " + item.time, "%m/%d/%Y %H:%M") - datetime.now()).days > 1) :
-                CalendarItems.remove(item);
+            time = (datetime.strptime(str(item.date) + " " + str(item.time), "%m/%d/%Y %H:%M") - parseDate).total_seconds();
+
+            if time < 24 * 60 * 60 and time > 0:
+                CalendarItems2.append(item);
 
         item1 = [];
         item2 = [];
 
-        for item in CalendarItems:
+        for item in CalendarItems2:
             value = {
                 "time": str(item.time),
                 "date": str(item.date),
@@ -352,7 +362,7 @@ class NotificationsPage(webapp2.RequestHandler):
             }
             item2.append(value);
 
-        for item in TodoItems:
+        for item in TodoItems2:
             value = {
                 "time": str(item.time),
                 "date": str(item.date),
@@ -367,7 +377,7 @@ class NotificationsPage(webapp2.RequestHandler):
             "username": username,
             "realName": realName,
             "TodoItems": item1,
-            "CalendarItems": item2
+            "CalendarItems": item2,
         }
         self.response.write(dashboardTemplate.render(values));
 
