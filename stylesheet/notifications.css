@@ -1,0 +1,55 @@
+h2 {
+  font-family: 'Raleway', sans-serif;
+  text-align: center;
+  color: white;
+}
+
+body {
+  font-family: 'Raleway', sans-serif;
+  text-align: center;
+  background: linear-gradient(-45deg, #ffccf9,#ffccdc,#f0ccff,#e2ccff);
+  background-size: 800% 800%;
+  -webkit-animation: Gradient 5s ease infinite;
+  -moz-animation: Gradient 5s ease infinite;
+  animation: Gradient 5s ease infinite;
+}
+
+#button:hover{
+  box-shadow:0 3px 6px 0 rgba(0, 0, 0, 0.3);
+}
+
+@-webkit-keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
+
+@-moz-keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
+
+@keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}

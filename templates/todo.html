@@ -7,7 +7,7 @@
   </head>
   <body>
     <div id="header">
-      {{user.realName}}
+      {{user.realName}}'s To-Do List
     </div>
     <div id="addItem" class="button">
       <form action="addToDoItem"  method="post">
@@ -23,10 +23,10 @@
     </div>
     <div class="itemContainer">
       <div id="whatBox" class="box">
-        What
+        To Do:
       </div>
       <div id="whenBox" class="box">
-        When
+        Date/Time:
       </div>
         {%for item in toDoItems%}
           <form action="viewItem.html" method="post">

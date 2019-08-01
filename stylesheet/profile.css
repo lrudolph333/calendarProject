@@ -3,7 +3,7 @@ body {
   margin: auto;
 	height: 90vh;
 	color: #fff;
-	background: linear-gradient(-45deg, #c3eedf, #b5ead7, #a2d2c1,#90bbac);
+	background: linear-gradient(-45deg, #b5ead7,#b5eae5,#b5eab5,#b5daea);
 	background-size: 400% 400%;
 	-webkit-animation: Gradient 5s ease infinite;
 	-moz-animation: Gradient 5s ease infinite;
@@ -77,7 +77,7 @@ h2 {
  width: 50%;
  border: 3px ;
  padding: 10px;
-  font-family: 'Rubik', sans-serif;
+  font-family: 'Raleway', sans-serif;
   border-width: 20px;
   -webkit-border-radius: 10px 10px 10px 10px;
  border-radius: 10px 10px 10px 10px;
