@@ -41,6 +41,19 @@ class toDoListCSS(webapp2.RequestHandler):
         f = open("stylesheet/todo.css", "r")
         self.response.write(f.read());
 
+class viewToDoItemPage(webapp2.RequestHandler):
+    def post(self):
+        view_item_template = jinja_env.get_template('templates/viewItem.html')
+        self.response.headers['Content-Type'] = "text/html"
+        id = self.request.get("userID")
+        itemList = ToDoItem.query().fetch()
+        userDict = UserCredentials.get_by_id(int(id))
+        values = {
+            "user": userDict,
+            "toDoItems": itemList,
+        }
+        self.response.write(view_item_template.render(values))
+
 class addToDoItemParser(webapp2.RequestHandler):
     def post(self):
         to_do_template = jinja_env.get_template('templates/newToDoItem.html')
