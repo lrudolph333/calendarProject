@@ -71,6 +71,11 @@
 
         var d = new Date();
         d.setDate(pastDate.getDate() - 1 + i);
+        var randDate = new Date();
+        randDate.setDate(pastDate.getDate() + 1);
+        if(randDate.getDate() == 1) {
+          d.setMonth(d.getMonth() - 1);
+        }
         var dayDiv = document.getElementById("day" + i);
         var p = document.createElement("p");
         p.innerHTML = d.toDateString();
