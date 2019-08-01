@@ -430,6 +430,12 @@ class NewToDoItemCSS(webapp2.RequestHandler):
         f = open("stylesheet/newToDoItem.css", "r")
         self.response.write(f.read());
 
+class ViewItemCSS(webapp2.RequestHandler):
+    def get(self):
+        self.response.headers['Content-Type'] = "text/css";
+        f = open("stylesheet/viewItem.css", "r")
+        self.response.write(f.read());
+
 class Favicon(webapp2.RequestHandler):
     def get(self):
         self.response.headers['Content-Type'] = "image/x-icon";
@@ -486,6 +492,7 @@ app = webapp2.WSGIApplication([
     ('/aboutUs.html', AboutPage),
     ('/stylesheet/aboutUs.css', AboutCSS),
     ('/stylesheet/profile.css', ProfileCSS),
+    ('/stylesheet/viewItem.css', ViewItemCSS),
     ('/stylesheet/newToDoItem.css', NewToDoItemCSS),
     ('/searchCalParser', SearchCalParser),
     ('/addToDoItem', addToDoItemParser),

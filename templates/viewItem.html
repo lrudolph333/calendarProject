@@ -2,22 +2,31 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="stylesheet/viewItem.css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
     <title>{{toDoItem.name}}</title>
   </head>
   <body>
-    <div class="">
+    <h2>Item Information</h2>
+    <div class="ItemInfo">
       Name: {{toDoItem.name}}
+      <br>
       <br>
       Time: {{toDoItem.time}}
       <br>
+      <br>
       Date: {{toDoItem.date}}
+      <br>
       <br>
       Urgency: {{toDoItem.urgency}}
       <br>
+      <br>
       Note: {{toDoItem.note}}
+      <br>
+      <br>
+      <input type="button" id='button' name="delete" value="Delete Item" onClick="deleteEntry()">
+      <input type="button" id='button2' value="Go Back" onClick="backPage()">
     </div>
-    <input type="button" name="delete" value="Delete Item" onClick="deleteEntry()">
-    <input type="button" value="Go Back" onClick="backPage()">
     <script>
 
       function backPage() {

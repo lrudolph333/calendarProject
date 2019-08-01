@@ -1,15 +1,18 @@
 body {
-	width: 600px;
-  margin: auto;
-	height: 90vh;
-	color: #fff;
-	background: linear-gradient(-45deg,#abc8ff, #b8abff,#dfabff, #abe4ff);
-	background-size: 400% 400%;
-	-webkit-animation: Gradient 5s ease infinite;
-	-moz-animation: Gradient 5s ease infinite;
-	animation: Gradient 5s ease infinite;
+  font-family: 'Raleway', sans-serif;
+  text-align: center;
+  background: linear-gradient(-45deg, #ffc98c,#ff9387,#f7cc74);
+  background-size: 400% 400%;
+  -webkit-animation: Gradient 5s ease infinite;
+  -moz-animation: Gradient 5s ease infinite;
+  animation: Gradient 5s ease infinite;
 }
 
+h2 {
+  font-family: 'Raleway', sans-serif;
+  text-align: center;
+  color: white;
+}
 @-webkit-keyframes Gradient {
 	0% {
 		background-position: 0% 50%
@@ -45,36 +48,33 @@ body {
 		background-position: 0% 50%
 	}
 }
-h2{
-  text-align: center;
-  color: white;
-  font-family: 'Raleway', sans-serif;
+
+#button {
+  width: 70px;
 }
 
-#backButton {
+#button:hover{
+  box-shadow:0 3px 6px 0 rgba(0, 0, 0, 0.3);
+}
+
+#button2 {
   position: relative;
   margin-top: -80px;
   width: 70px;
   z-index: 33;
 }
 
-#subButton {
-  width: 70px;
+#button2:hover{
+  box-shadow:0 3px 6px 0 rgba(0, 0, 0, 0.3);
 }
 
-.center {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 15%;
-}
-
-#NewToDo {
+.ItemInfo{
   margin: auto;
  width: 50%;
  border: 3px ;
  padding: 10px;
-  font-family: 'Rubik', sans-serif;
+  font-family: 'Raleway', sans-serif;
+  color: white;
   border-width: 20px;
   -webkit-border-radius: 10px 10px 10px 10px;
  border-radius: 10px 10px 10px 10px;
@@ -86,8 +86,4 @@ h2{
  -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
  box-shadow: 0 50px 80px 0 rgba(0,0,0,0.3);
  text-align: center;
-}
-
-.searchButtons:hover{
-  box-shadow:0 3px 6px 0 rgba(0, 0, 0, 0.3);
 }
