@@ -30,11 +30,13 @@ body {
   font-family: 'Raleway', sans-serif;
   color: white;
   width: 19%;
-  border-right-style: solid;
-  border-right-color: white;
-  border-right-width: thin;
   text-align: center;
 
+}
+
+.weekButton:hover{
+  transform: scale(1.1);
+  transition: all ease 500ms;
 }
 
 #rightButton {
@@ -57,9 +59,6 @@ body {
   float: left;
   font-family: 'Raleway', sans-serif;
   width: 60%;
-  border-right-style: solid;
-  border-right-color: white;
-  border-right-width: thin;
   color: white;
   text-align: center;
 
@@ -76,6 +75,13 @@ body {
   padding: 0px;
 
 }
+
+.sideItem:hover{
+  box-shadow:0 2px 2px 0 rgba(0, 0, 0, 0.3);
+  padding:5px;
+  margin-top:-5px;
+}
+
 #add {
 float:middle;
 vertical-align: center;
