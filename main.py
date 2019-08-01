@@ -306,7 +306,8 @@ class SearchCalParser(webapp2.RequestHandler):
                 "title": str(event.title),
                 "location": str(event.location),
                 "date": str(event.date),
-                "time": str(event.time)
+                "time": str(event.time),
+                "id": str(event.key.integer_id())
             }
 
             events.append(data);
@@ -447,9 +448,22 @@ class ToDoDelete(webapp2.RequestHandler):
 
         self.response.write("Success");
 
+class CalDelete(webapp2.RequestHandler):
+    def post(self):
+        self.response.headers['Content-Type'] = "text/plain";
+
+        itemID = self.request.get("id");
+
+        item = CalendarItem.get_by_id(int(itemID));
+
+        item.key.delete();
+
+        self.response.write("Success");
+
 app = webapp2.WSGIApplication([
     ('/', LoginPage),
     ('/deleteToDoItem', ToDoDelete),
+    ('/deleteCalItem', CalDelete),
     ('/login', LoginParser),
     ('/signup', SignupParser),
     ('/addCalItem', CalItemParser),
