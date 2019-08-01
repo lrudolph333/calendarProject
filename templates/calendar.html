@@ -74,6 +74,11 @@
         var dayDiv = document.getElementById("day" + i);
         var p = document.createElement("p");
         p.innerHTML = d.toDateString();
+        if(i == 2) {
+
+          p.setAttribute("style", "font-weight: 1000");
+
+        }
         dayDiv.appendChild(p);
 
       }
@@ -236,6 +241,11 @@
 
             var p = document.createElement("p");
             p.innerHTML = d.toDateString();
+            if(i == 2) {
+
+              p.setAttribute("style", "font-weight: 1000");
+
+            }
             dayDiv.appendChild(p);
 
           }
