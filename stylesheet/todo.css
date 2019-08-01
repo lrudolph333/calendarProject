@@ -26,6 +26,8 @@ input[name=addToDoItem] {
    color: white;
 }
 
+
+
 #addItem {
   margin-top: 2px;
   width: 100%;
@@ -94,12 +96,12 @@ input[name=goBackButton] {
   margin-bottom: 1px;
 }
 
-#toDoItemWhat {
+input[name=toDoItemWhat] {
   grid-column: 1 / 2;
   margin-right: 1px;
 }
 
-#toDoItemWhen {
+input[name=toDoItemWhen] {
   grid-column: 2 / 3;
   margin-left: 1px;
 }
