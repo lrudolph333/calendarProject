@@ -4,20 +4,24 @@
     <meta charset="utf-8">
     <title>Add To-Do Item</title>
     <link rel="stylesheet" type="text/css" href="stylesheet/newToDoItem.css">
+      <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
   </head>
-  helloWorld
+  <h2>Add To-Do Item</h2>
   <body>
     <div class="">
-        <form class="form" action="addToDoItem" method="post">
+        <form id="NewToDo" class="form" action="addToDoItem" method="post">
           <input type="hidden" name="userID" value="{{user.key.integer_id()}}"/>
-          <label for="name">Name</label>
+          <label for="name">Name:</label>
           <input type="text" name="name">
           <br>
-          <label for="date">Date</label>
+          <br>
+          <label for="date">Date:</label>
           <input type="date" name="date">
           <br>
-          <label for="time">Time</label>
+          <br>
+          <label for="time">Time:</label>
           <input type="time" name="time">
+          <br>
           <br>
           <label for="urgency">Urgency:</label>
           <select class="form" name="urgency">
@@ -26,9 +30,14 @@
               <option value="yellow">Yellow</option>
           </select>
           <br>
+          <br>
           <label for="note">Note:</label>
-          <textarea name="note" rows="5"></textarea>
-          <input type="submit" name="Submit" value="Submit">
+          <br>
+          <textarea name="note" rows="4"></textarea>
+          <br>
+          <br>
+          <input class="searchButtons" type="submit" name="Submit" value="Submit">
+          <br>
           <br>
         </form>
       </div>
