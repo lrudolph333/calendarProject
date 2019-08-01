@@ -36,18 +36,15 @@
           <textarea name="note" rows="4"></textarea>
           <br>
           <br>
-          <input class="searchButtons" type="submit" name="Submit" value="Submit">
+          <input class="center searchButtons" id="subButton" type="submit" name="Submit" value="Submit">
           <br>
           <br>
         </form>
       </div>
-      <div class="">
-
-        <form class="form" action="todo.html" method="post">
-          <input type="hidden" name="userID" value="{{user.key.integer_id()}}">
-          <input type="submit" name="goBackButton" value="Go Back">
-        </form>
-      </div>
+      <form class="form" action="todo.html" method="post">
+        <input type="hidden" name="userID" value="{{user.key.integer_id()}}">
+        <input id="backButton" class="center" type="submit" name="goBackButton" value="Go Back">
+      </form>
 
   </body>
 </html>
