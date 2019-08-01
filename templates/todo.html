@@ -28,9 +28,16 @@
       <div id="whenBox" class="box">
         When
       </div>
+        {%for item in toDoItems%}
+          <div class = "toDoItem" id="toDoItemWhat" >
+            {{item.name}}
+          </div>
+          <div class = "toDoItem" id="toDoItemWhen" >
+            {{item.date}}
+          </div>
+        {%endfor%}
+      </div>
     </div>
-    {%for item in itemList%}
 
-    {%endfor%}
   </body>
 </html>
