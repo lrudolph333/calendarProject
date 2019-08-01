@@ -51,6 +51,24 @@ h2{
   font-family: 'Raleway', sans-serif;
 }
 
+#backButton {
+  position: relative;
+  margin-top: -80px;
+  width: 70px;
+  z-index: 33;
+}
+
+#subButton {
+  width: 70px;
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 15%;
+}
+
 #NewToDo {
   margin: auto;
  width: 50%;
