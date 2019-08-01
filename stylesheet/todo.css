@@ -3,8 +3,8 @@ body {
   flex-direction: column;
   margin: 0;
   width: 100%;
-  font-family: 'Raleway', sans-serif;
   color: white;
+  font-family: 'Raleway', sans-serif;
   background-color: #e9f1ff;
 
 }
@@ -16,6 +16,7 @@ body {
   width: 100%;
   background-color: #bed5ff;
   text-align: center;
+  font-family: 'Raleway', sans-serif;
   vertical-align: middle;
   margin-left: auto;
   margin-right: auto;
@@ -28,6 +29,8 @@ input[name=addToDoItem] {
    border: 2px solid white;
    border-radius: 5px;
    background-color:#afcbff /*<<<INSERT>>>*/;
+   color: white;
+   text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
    font-family: 'Raleway', sans-serif;
    color: white;
    font-size: 20px;
@@ -112,7 +115,6 @@ input[name=goBackButton] {
   border-radius: 6px;
   color: black;
   font-size: 20px;
-  font-family: 'Raleway', sans-serif;
   margin-top: 1px;
   margin-bottom: 1px;
 }
@@ -135,13 +137,15 @@ input[name=goBackButton] {
 input[name=toDoItemWhat] {
   grid-column: 1 / 2;
   margin-right: 2px;
-  padding-left: 5px
+  padding-left: 5px;
+  font-family: 'Raleway', sans-serif;
 }
 
 input[name=toDoItemWhen] {
   grid-column: 2 / 3;
   margin-left: 2px;
   padding-right: 5px;
+  font-family: 'Raleway', sans-serif;
 }
 
 form {
