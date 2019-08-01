@@ -45,12 +45,12 @@ class viewToDoItemPage(webapp2.RequestHandler):
     def post(self):
         view_item_template = jinja_env.get_template('templates/viewItem.html')
         self.response.headers['Content-Type'] = "text/html"
-        id = self.request.get("userID")
-        toDoItem = ToDoItem.query().filter(ToDoItem.name == self.request.get("itemName")).fetch()
+        id = self.request.get("userID");
+        toDoItem = ToDoItem.get_by_id(int(self.request.get("itemID")));
         userDict = UserCredentials.get_by_id(int(id))
         values = {
             "user": userDict,
-            "toDoItem": toDoItem[0],
+            "toDoItem": toDoItem,
         }
         self.response.write(view_item_template.render(values))
 
