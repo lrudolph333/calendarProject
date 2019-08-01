@@ -435,8 +435,21 @@ class Favicon(webapp2.RequestHandler):
         f = open("favicon.ico", "r")
         self.response.write(f.read());
 
+class ToDoDelete(webapp2.RequestHandler):
+    def post(self):
+        self.response.headers['Content-Type'] = "text/plain";
+
+        itemID = self.request.get("id");
+
+        item = ToDoItem.get_by_id(int(itemID));
+
+        item.key.delete();
+
+        self.response.write("Success");
+
 app = webapp2.WSGIApplication([
     ('/', LoginPage),
+    ('/deleteToDoItem', ToDoDelete),
     ('/login', LoginParser),
     ('/signup', SignupParser),
     ('/addCalItem', CalItemParser),
