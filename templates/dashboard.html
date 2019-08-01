@@ -81,6 +81,10 @@
             break;
           case 2:
             form.action = "notifications.html";
+            var key4 = document.createElement("input");
+            key4.name = "date";
+            key4.value = getDate();
+            form.appendChild(key4);
             break;
           case 3:
             form.action = "profile.html";
@@ -97,6 +101,21 @@
         document.body.appendChild(form);
         form.submit();
 
+      }
+
+      function getDate() {
+        var today = new Date();
+        var dd = today.getDate();
+        var mm = today.getMonth()+1; //January is 0!
+        var yyyy = today.getFullYear();
+        var hh = today.getHours();
+        var min = today.getMinutes();
+        if(dd<10){dd='0'+dd}
+        if(mm<10){mm='0'+mm}
+        if(hh<10){hh='0'+hh}
+        if(min<10){min='0'+min}
+        today = mm+"/"+dd+"/"+yyyy + " " + hh + ":" + min;
+        return today;
       }
 
       var xhttp = new XMLHttpRequest();
