@@ -29,12 +29,10 @@
         When
       </div>
         {%for item in toDoItems%}
-          <div class = "toDoItem" id="toDoItemWhat" >
-            {{item.name}}
-          </div>
-          <div class = "toDoItem" id="toDoItemWhen" >
-            {{item.date}}
-          </div>
+          <form action="index.html" method="post">
+            <input class="toDoItem" type="submit" name="toDoItemWhat" value="{{item.name}}">
+            <input class="toDoItem" type="submit" name="toDoItemWhen" value="{{item.date}}">
+          </form>
         {%endfor%}
       </div>
     </div>
