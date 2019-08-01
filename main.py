@@ -27,9 +27,11 @@ class ToDoListPage(webapp2.RequestHandler):
         to_do_template = jinja_env.get_template('templates/todo.html')
         self.response.headers['Content-Type'] = "text/html"
         id = self.request.get("userID")
+        itemList = ToDoItem.query().fetch()
         userDict = UserCredentials.get_by_id(int(id))
         values = {
             "user": userDict,
+            "toDoItems": itemList,
         }
         self.response.write(to_do_template.render(values))
 
@@ -50,13 +52,16 @@ class addToDoItemParser(webapp2.RequestHandler):
             "orange": 2,
             "yellow": 1,
         }
-        newItem = ToDoItem(time =self.request.get("time"),
+
+        if self.request.get("time") :
+
+            newItem = ToDoItem(time =self.request.get("time"),
                            date =self.request.get("date"),
                            name=self.request.get("name"),
                            urgency=urgencyMap.get(self.request.get("urgency")),
                            note=self.request.get("note"),
                            ownerID=id)
-        newItem.put()
+            newItem.put()
         values = {
             "user": userDict,
         }
@@ -313,6 +318,65 @@ class SearchCalCSS(webapp2.RequestHandler):
         f = open("stylesheet/searchCal.css", "r")
         self.response.write(f.read());
 
+class NotificationsPage(webapp2.RequestHandler):
+    def post(self):
+        dashboardTemplate = jinja_env.get_template('templates/notifications.html');
+        self.response.headers['Content-Type'] = "text/html";
+
+        userID = self.request.get("userID")
+        username = self.request.get("username")
+        realName = self.request.get("realName")
+
+        query1 = ToDoItem.query().filter(ToDoItem.ownerID == userID);
+        query2 = CalendarItem.query().filter(CalendarItem.ownerID == userID);
+        TodoItems = query1.fetch();
+        CalendarItems = query2.fetch();
+
+        for item in TodoItems:
+            if (((datetime.strptime(str(item.date) + " " + str(item.time), "%Y-%m-%d %H:%M") - datetime.now()).days < 0) or (datetime.strptime(str(item.date) + " " + str(item.time), "%Y-%m-%d %H:%M") - datetime.now()).days > 1) :
+                TodoItems.remove(item);
+
+        for item in CalendarItems:
+            if (((datetime.strptime(item.date + " " + item.time, "%m/%d/%Y %H:%M") - datetime.now()).days < 0) or (datetime.strptime(item.date + " " + item.time, "%m/%d/%Y %H:%M") - datetime.now()).days > 1) :
+                CalendarItems.remove(item);
+
+        item1 = [];
+        item2 = [];
+
+        for item in CalendarItems:
+            value = {
+                "time": str(item.time),
+                "date": str(item.date),
+                "title": str(item.title),
+                "location": str(item.location)
+            }
+            item2.append(value);
+
+        for item in TodoItems:
+            value = {
+                "time": str(item.time),
+                "date": str(item.date),
+                "name": str(item.name),
+                "urgency": str(item.urgency),
+                "note": str(item.note)
+            }
+            item1.append(value);
+
+        values = {
+            "userID": userID,
+            "username": username,
+            "realName": realName,
+            "TodoItems": item1,
+            "CalendarItems": item2
+        }
+        self.response.write(dashboardTemplate.render(values));
+
+class NotificationsCSS(webapp2.RequestHandler):
+    def get(self):
+        self.response.headers['Content-Type'] = "text/css";
+        f = open("stylesheet/notifications.css", "r")
+        self.response.write(f.read());
+
 class ProfileCSS(webapp2.RequestHandler):
     def get(self):
         self.response.headers['Content-Type'] = "text/css";
@@ -344,6 +408,8 @@ app = webapp2.WSGIApplication([
     ('/profile.html', ProfilePage),
     ('/searchCal.html', SearchCalPage),
     ('/stylesheet/searchCal.css', SearchCalCSS),
+    ('/notifications.html', NotificationsPage),
+    ('/stylesheet/notifications.css', NotificationsCSS),
     ('/stylesheet/profile.css', ProfileCSS),
     ('/searchCalParser', SearchCalParser),
     ('/addToDoItem', addToDoItemParser),

@@ -9,16 +9,28 @@
     <div id="header">
       {{user.realName}}
     </div>
-    <div class="">
-      <form class="form" action="addToDoItem" method="post">
+    <div id="addItem" class="button">
+      <form action="addToDoItem" method="post">
         <input type="submit" name="Submit" value="Add New Item">
         <input type="hidden" name="userID" value="{{user.key.integer_id()}}">
       </form>
-        <br>
+    </div>
+    <div id="goBack" class="button">
       <form class="form" action="dashboard.html" method="post">
         <input type="hidden" name="userID" value="{{user.key.integer_id()}}">
         <input type="submit" name="goBackButton" value="Go Back">
       </form>
     </div>
+    <div class="itemContainer">
+      <div id="whatBox" class="box">
+        What
+      </div>
+      <div id="whenBox" class="box">
+        When
+      </div>
+    </div>
+    {%for item in itemList%}
+
+    {%endfor%}
   </body>
 </html>
