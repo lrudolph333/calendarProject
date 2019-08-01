@@ -5,13 +5,55 @@
     <title>Notifications - To Do</title>
   </head>
   <body>
-    {{CalendarItems}}
-    {{TodoItems}}
+    <div id="eventList">
+      <h2>Events happening soon</h2>
+    </div>
     <form action="dashboard.html" method="post">
       <input type="hidden" name="userID" value="{{userID}}">
       <input type="hidden" name="realName" value="{{realName}}">
       <input type="hidden" name="username" value="{{username}}">
       <input type="submit" name="Submit" value="Go Back">
     </form>
+    <script>
+
+        var data1string = ("{{ToDoItems}}".replace(/&#39;/g, "\""));
+        var data2string = ("{{CalendarItems}}".replace(/&#39;/g, "\""));
+
+        if("{{ToDoItems}}" != "") {
+          eval("var data1 = " + data1string);
+        }
+        else {
+          data1 = [];
+        }
+        if("{{CalendarItems}}" != "") {
+          eval("var data2 = " + data2string);
+        }
+        else {
+          data2 = [];
+        }
+
+        for(var i=0; i<data1.length; i++) {
+
+          var div = document.createElement("div");
+          div.innerHTML = "<strong>" + data1[i].name + "</strong> <br>"
+                        + "Urgency Level " + data1[i].urgency + "<br>"
+                        + "Occurs at " + data1[i].time + " on " + data1[i].date;
+
+          document.getElementById("eventList").appendChild(div);
+
+        }
+
+        for(var i=0; i<data2.length; i++) {
+          var div = document.createElement("div");
+          div.innerHTML = "<strong>" + data2[i].title + "</strong> <br>"
+                        + "Located at " + data2[i].location + "<br>"
+                        + "Occurs at " + data2[i].time + " on " + data2[i].date;
+
+          document.getElementById("eventList").appendChild(div);
+        }
+
+        document.getElementById("eventList").appendChild(document.createElement("br"));
+
+    </script>
   </body>
 </html>
