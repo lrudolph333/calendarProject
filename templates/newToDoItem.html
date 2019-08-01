@@ -12,19 +12,19 @@
         <form id="NewToDo" class="form" action="addToDoItem" method="post">
           <input type="hidden" name="userID" value="{{user.key.integer_id()}}"/>
           <label for="name">Name:</label>
-          <input type="text" name="name">
+          <input type="text" name="name" required>
           <br>
           <br>
           <label for="date">Date:</label>
-          <input type="date" name="date">
+          <input type="date" name="date" required>
           <br>
           <br>
           <label for="time">Time:</label>
-          <input type="time" name="time">
+          <input type="time" name="time" required>
           <br>
           <br>
           <label for="urgency">Urgency:</label>
-          <select class="form" name="urgency">
+          <select class="form" name="urgency" required>
               <option value="red">Red</option>
               <option value="orange">Orange</option>
               <option value="yellow">Yellow</option>
