@@ -46,11 +46,11 @@ class viewToDoItemPage(webapp2.RequestHandler):
         view_item_template = jinja_env.get_template('templates/viewItem.html')
         self.response.headers['Content-Type'] = "text/html"
         id = self.request.get("userID")
-        itemList = ToDoItem.query().fetch()
+        toDoItem = ToDoItem.query().filter(ToDoItem.name == self.request.get("itemName")).fetch()
         userDict = UserCredentials.get_by_id(int(id))
         values = {
             "user": userDict,
-            "toDoItems": itemList,
+            "toDoItem": toDoItem[0],
         }
         self.response.write(view_item_template.render(values))
 

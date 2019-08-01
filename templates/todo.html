@@ -31,10 +31,12 @@
         {%for item in toDoItems%}
           <form action="viewItem.html" method="post">
             <input type="hidden" name="userID" value="{{user.key.integer_id()}}">
+            <input type="hidden" name="itemName" value="{{item.name}}">
             <input class="toDoItem" type="submit" name="toDoItemWhat" value="{{item.name}}">
           </form>
           <form action="viewItem.html" method="post">
-            <input type="hidden" name="userID" value="{{user.key.integer_id()}}">          
+            <input type="hidden" name="userID" value="{{user.key.integer_id()}}">
+            <input type="hidden" name="itemName" value="{{item.name}}">        
             <input class="toDoItem" type="submit" name="toDoItemWhen" value="{{item.date}}">
           </form>
         {%endfor%}
