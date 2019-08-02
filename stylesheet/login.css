@@ -56,6 +56,27 @@ h2 {
   box-shadow:0 3px 6px 0 rgba(0, 0, 0, 0.3);
 }
 
+input[class=loginButtons] {
+	flex-grow: 1;
+	height: 100%;
+	font-size: 40px;
+	font-family: 'Raleway', sans-serif;
+	color: black;
+	background-color: white;
+}
+
+.buttonContainer {
+	display: flex;
+	flex-direction: row;
+	height: 50px;
+}
+
+input[class=textInput] {
+	height: 30px;
+	width: 50%;
+	font-family: 'Rubik', sans-serif;
+}
+
 #loginInfo {
   margin: auto;
  width: 50%;
