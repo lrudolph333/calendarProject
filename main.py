@@ -448,6 +448,12 @@ class pic1(webapp2.RequestHandler):
         f = open("templates/IMG_6487.JPG", "r")
         self.response.write(f.read());
 
+class pic2(webapp2.RequestHandler):
+    def get(self):
+        self.response.headers['Content-Type'] = "image/png";
+        f = open("templates/mikeyimage.png", "r")
+        self.response.write(f.read());
+
 class ToDoDelete(webapp2.RequestHandler):
     def post(self):
         self.response.headers['Content-Type'] = "text/plain";
@@ -504,6 +510,7 @@ app = webapp2.WSGIApplication([
     ('/addToDoItem', addToDoItemParser),
     ('/favicon.ico', Favicon),
     ('/viewItem.html', viewToDoItemPage),
-    ('/templates/IMG_6487.JPG', pic1)
+    ('/templates/IMG_6487.JPG', pic1),
+    ('/templates/mikeyimage.png', pic2)
 
 ], debug=True);

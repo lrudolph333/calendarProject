@@ -10,6 +10,10 @@
   font-size: 30px;
 }
 
+.thing {
+  height: 280px;
+}
+
 img {
   border-radius: 999px;
 }
