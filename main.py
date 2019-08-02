@@ -442,6 +442,12 @@ class Favicon(webapp2.RequestHandler):
         f = open("favicon.ico", "r")
         self.response.write(f.read());
 
+class pic1(webapp2.RequestHandler):
+    def get(self):
+        self.response.headers['Content-Type'] = "image/jpeg";
+        f = open("templates/IMG_6487.JPG", "r")
+        self.response.write(f.read());
+
 class ToDoDelete(webapp2.RequestHandler):
     def post(self):
         self.response.headers['Content-Type'] = "text/plain";
@@ -497,6 +503,7 @@ app = webapp2.WSGIApplication([
     ('/searchCalParser', SearchCalParser),
     ('/addToDoItem', addToDoItemParser),
     ('/favicon.ico', Favicon),
-    ('/viewItem.html', viewToDoItemPage)
+    ('/viewItem.html', viewToDoItemPage),
+    ('/templates/IMG_6487.JPG', pic1)
 
 ], debug=True);
