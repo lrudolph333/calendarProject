@@ -448,6 +448,12 @@ class pic1(webapp2.RequestHandler):
         f = open("templates/IMG_6487.JPG", "r")
         self.response.write(f.read());
 
+class pic3(webapp2.RequestHandler):
+    def get(self):
+        self.response.headers['Content-Type'] = "image/jpeg";
+        f = open("templates/IMG_3050.JPG", "r")
+        self.response.write(f.read());
+
 class pic2(webapp2.RequestHandler):
     def get(self):
         self.response.headers['Content-Type'] = "image/png";
@@ -511,6 +517,7 @@ app = webapp2.WSGIApplication([
     ('/favicon.ico', Favicon),
     ('/viewItem.html', viewToDoItemPage),
     ('/templates/IMG_6487.JPG', pic1),
-    ('/templates/mikeyimage.png', pic2)
+    ('/templates/mikeyimage.png', pic2),
+    ('/templates/IMG_3050.jpg', pic3)
 
 ], debug=True);
