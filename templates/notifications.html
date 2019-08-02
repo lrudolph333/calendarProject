@@ -17,10 +17,10 @@
     </form>
     <script>
 
-        var data1string = ("{{ToDoItems}}".replace(/&#39;/g, "'").replace(/&#34;/g, "\""));
+        var data1string = ("{{TodoItems}}".replace(/&#39;/g, "'").replace(/&#34;/g, "\""));
         var data2string = ("{{CalendarItems}}".replace(/&#39;/g, "'").replace(/&#34;/g, "\""));
 
-        if("{{ToDoItems}}" != "") {
+        if("{{TodoItems}}" != "") {
           eval("var data1 = " + data1string);
         }
         else {
