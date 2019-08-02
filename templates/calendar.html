@@ -75,14 +75,30 @@
 
       function fetchEvents() {
 
+        var month = pastDate.getMonth() + 1 + "";
+        var day = pastDate.getDate() + "";
+        var year = pastDate.getFullYear();
+
+        if(day.length < 2) {
+          day = "0" + day;
+        }
+        if(month.length < 2) {
+          month = "0" + month;
+        }
+
+        var dateString = month + "/" + day + "/" + year;
+
         var formData = new FormData();
-        formData.append("filter", pastDate);
+        formData.append("filter", dateString);
         formData.append("filterBy", "week");
 
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function() {
           if (this.readyState == 4 && this.status == 200) {
-            console.log(xhttp.responseText);
+            eval("var data=" + xhttp.responseText);
+            for(var i=0; i<data.length; i++) {
+              
+            }
           }
         };
         xhttp.open("POST", "/queryparser", true);
