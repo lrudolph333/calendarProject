@@ -1,0 +1,29 @@
+.wrapper {
+  display: inline-grid;
+  align-content: space-around;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  width: 100%;
+  text-align: center;
+}
+
+.bigDiv {
+
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+
+}
+
+.form {
+  margin-left: auto;
+  margin-right: auto;
+  width: 20%;
+  margin-top: 5%;
+}
+
+.button {
+  margin-left: auto;
+  margin-right: auto;
+  width: 60px;
+}
