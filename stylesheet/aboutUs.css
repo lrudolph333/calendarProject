@@ -10,6 +10,10 @@
   font-size: 30px;
 }
 
+img {
+  border-radius: 999px;
+}
+
 .box {
   width: 80%;
   text-align: center;
