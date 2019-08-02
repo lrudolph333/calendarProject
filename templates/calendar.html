@@ -56,7 +56,9 @@
     <script>
 
       function clearFunct() {
-        clear();
+        if(confirm("Are you sure you want to do this? It will clear your entire calendar")) {
+          clear();
+        }
       }
 
       var pastDate = new Date();
