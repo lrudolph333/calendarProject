@@ -2,6 +2,8 @@ import webapp2
 import os
 import jinja2
 from google.appengine.ext import ndb
+from datetime import datetime
+from datetime import timedelta
 from models import *
 
 jinja_env = jinja2.Environment(
@@ -148,11 +150,54 @@ class CalendarCSS(webapp2.RequestHandler):
         f = open("stylesheet/calendar.css", "r")
         self.response.write(f.read());
 
+class QueryParser(webapp2.RequestHandler):
+    def post(self):
+        self.response.headers['Content-Type'] = "text/plain";
+        filterBy = self.request.get("filterBy");
+        filter = self.request.get("filter");
+        if filterBy == "week":
+            startDate = datetime.strptime(filter, "%a %b %d %Y %H:%M:%S GMT-0700 (Pacific Daylight Time)");
+            dates = [];
+            events = [];
+
+            for i in range(0, 7):
+                dates.append(startDate);
+                startDate += timedelta(days=1);
+
+            for date in dates:
+                startMonth = str(date.month);
+                startYear = str(date.year);
+                startDay = str(date.day);
+                if(len(startMonth) == 1) :
+                    startMonth = "0" + startMonth;
+                    if(len(startDay) == 1) :
+                        startDay = "0" + startDay;
+
+                dateString = startMonth + "/" + startDay + "/" + startYear;
+
+                eventList = CalendarItem.query().filter(CalendarItem.date == dateString).fetch();
+
+                dayEvents = [];
+
+                for event in eventList:
+                    currentEvent = {
+                        "date": str(event.date),
+                        "location": str(event.location),
+                        "title": str(event.title),
+                        "time": str(event.time)
+                    }
+                    dayEvents.append(currentEvent);
+
+                events.append(dayEvents);
+
+            self.response.write(events);
+
 app = webapp2.WSGIApplication([
     ('/', LoginPage),
     ('/login', LoginParser),
     ('/signup', SignupParser),
     ('/addCalItem', CalItemParser),
+    ('/queryparser', QueryParser),
     ('/dashboard.html', DashboardPage),
     ('/calendar.html', CalendarPage),
     ('/stylesheet/calendar.css', CalendarCSS),
