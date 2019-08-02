@@ -3,9 +3,16 @@ runtime: python27
 api_version: 1
 threadsafe: true
 
+automatic_scaling:
+  max_instances: 1
+  min_instances: 1
+
 handlers:
 - url: /.*
   script: main.app
+  secure: always
+  redirect_http_response_code: 301
+  script: auto
 
 libraries:
 - name: jinja2
